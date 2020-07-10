@@ -1,0 +1,10 @@
+#select-item-container {
+  padding: 20px;
+  transition: background-color .2s ease-in-out;
+  font-size: .75rem;
+}
+
+#select-item-container:hover {
+  background-color: #e4e4e4;
+  cursor: pointer;
+}

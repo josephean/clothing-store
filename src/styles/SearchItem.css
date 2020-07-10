@@ -1,0 +1,48 @@
+#search-item-container {
+  border: 1px solid rgb(219, 219, 219);
+  display: flex;
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 60%;
+  align-self: center;
+  position: relative;
+  margin: 20px auto;
+  transition: background-color .15s ease-in-out;
+}
+
+#search-item-container:hover {
+  background-color: #e4e4e4;
+  color: #000;
+}
+
+
+.search-photo {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.search-details {
+  flex: 1;
+  display: block;
+}
+
+.search-details .text {
+  padding: 20px;
+  text-align: left;
+}
+
+.search-details #product-container {
+  display: flex; 
+  flex: 1;
+  padding: 10px 20px;
+}
+
+#product-container .product {
+  text-align: left;
+  flex: 1;
+}
+
+#product-container .text .price {
+  text-align: right;
+  flex: 1;
+}

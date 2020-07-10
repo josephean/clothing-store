@@ -1,0 +1,136 @@
+#navBar {
+  height: auto;
+  background-color: #000;
+  top: 0px;
+  position: relative;
+  padding: 1rem;
+  display: block;
+}
+
+.title-container {
+  text-align: center;
+}
+
+.title {
+  color: #fff;
+  font-size: 64px;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.tagline {
+  font-size: 16px;
+  color: #f0f0f0;
+}
+
+#nav-and-icons {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+#navigation {
+  display: flex;
+  flex: 1;
+  padding: 1rem;
+}
+
+#navigation ul {
+  list-style: none;
+}
+
+#navigation li {
+  display: inline;
+}
+
+.nav-link {
+  color: #f0f0f0;
+  padding: 1rem;
+  line-height: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  outline: none;
+  transition: border .2s ease-in-out;
+}
+
+.nav-link:hover {
+  border-bottom: 5px solid #fff;
+  cursor: pointer;
+}
+
+.nav-link:focus {
+  border-bottom: 5px solid #fff;
+}
+
+#iconsContainer {
+  flex: .25;
+  padding: 2rem;
+  display: flex;
+  line-height: 30px;
+  justify-content: flex-end;
+}
+
+.icon {
+  color: #fff;
+  padding: 1rem;
+}
+
+/* ------ submenu styling -------*/
+
+#submenu-container {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  padding: 1rem;
+  left: 0;
+  margin-top: 1rem;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+#categories {
+  display: flex;
+}
+
+.category {
+  flex: 1;
+  padding: 1rem;
+  margin: 1rem;
+  display: block;
+}
+
+
+
+.item {
+  transition: .2s ease-in;
+  margin-left: 0px;
+  padding: 10px;
+
+}
+.submenu-item {
+  text-decoration: none;
+  padding: 10px;
+  color: #000;
+  width: 100%;
+
+}
+
+.item a:hover {
+  text-decoration: underline;
+  transition: .2s ease-in;
+
+}
+
+.search:hover {
+  cursor: pointer;
+}
+
+.search-overlay {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  box-sizing: border-box;
+  left: 0;
+  transition: background-color .2s ease-in;
+
+}
