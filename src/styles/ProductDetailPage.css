@@ -1,6 +1,7 @@
 .product-details-container {
   display: flex;
   flex-wrap: wrap;
+  overflow: none;
 }
 
 .product-details-container .image {

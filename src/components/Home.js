@@ -8,11 +8,13 @@ return (
     <div id="container">
       <div id="content">
         <div className="banner"><img className="banner-image" alt="makeup brushes" src={bannerImg}></img></div>
+        <div id="main-content">
           <div className="header"><h1>New Arrivals</h1></div>
           <div className="items">
             <ProductList 
             productType={data.bestSellers}/>
           </div>
+        </div>
       </div>
     </div>
   )
