@@ -14,7 +14,7 @@ class ProductDetailPage extends Component {
     console.log('product >>> ', product);
     return (
       <div className="product-details-container">
-        <div className="image" align="center"><img style={{maxWidth: "375px"}} src={product.image}></img></div>
+        <div className="image" align="center"><img style={{maxWidth: "350px"}} src={product.image}></img></div>
         <div className="details-view">
           <h1>{product.name}</h1>
           <div className="price">${product.price}</div>

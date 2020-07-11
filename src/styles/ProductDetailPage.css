@@ -2,19 +2,18 @@
   display: flex;
   flex-wrap: wrap;
   overflow: none;
+
 }
 
 .product-details-container .image {
   flex: 1;
   padding: 1rem;
-  margin: 1rem;
-  /* width: 500px; */
+  padding-top: 2rem;
 }
 
 .product-details-container .details-view {
   flex: 1;
   padding: 1rem; 
-  margin: 1rem;
 }
 
 .product-details-container h1 {
