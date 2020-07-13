@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Select.css';
 import SelectMenu from './SelectMenu';
 
@@ -38,10 +38,9 @@ class Select extends Component {
 
   render() {
 
-    let rotated = this.state.toggle;
+    let expanded = this.state.toggle;
 
-    rotated = (rotated === true ? 'up' : 'down');
-    console.log('rotated :>> ', rotated);
+    expanded = (expanded === true ? 'up' : 'down');
 
     return(
       <div id="select-container">
@@ -49,7 +48,7 @@ class Select extends Component {
           <div className="select-text">
             {this.state.__selected}
           </div>
-          <div className="select-toggle"><FontAwesomeIcon className={`select-icon ${rotated}`} icon={faChevronDown}></FontAwesomeIcon></div>
+          <div className="select-toggle"><FontAwesomeIcon className={`select-icon ${expanded}`} icon={faChevronDown}></FontAwesomeIcon></div>
         </div>
         {this.state.toggle ? <SelectMenu select={this.onSelect} items={this.props.menuItems} toggle={this.toggleMenu}/>: ''}
       </div>

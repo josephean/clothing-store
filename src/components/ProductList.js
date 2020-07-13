@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ProductListItem from './ProductListItem';
 import '../styles/ProductList.css';
 const ProductList = props => {

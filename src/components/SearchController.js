@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/SearchController.css';
-import  SearchItem  from './SearchItem';
 import SearchList from './SearchList';
-import placeholder from '../img-placeholder.png'
 import data from '../data';
 class SearchController extends Component {
 
@@ -24,23 +22,21 @@ class SearchController extends Component {
   }
 
   closeOverlay = event => {
+
     this.props.close(event);
   }
 
   handleSearch = e => {
     const search = e.target.value.toLowerCase();
-    
-    this.state.__searchValue = search;
-    this.state.__filteredItems = data.allItems.filter(item =>   
-      {
-        let name = item.name.toLowerCase();
-        return name.includes(search)
-      });
- ;
 
-    this.setState(
-      this.state,
-    )
+    this.setState({
+      __searchValue: search,
+      __filteredItems: data.allItems.filter(item =>   
+        {
+          let name = item.name.toLowerCase();
+          return name.includes(search)
+        }),
+    })
   }
 
   renderList = () => {

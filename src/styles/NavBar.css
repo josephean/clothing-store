@@ -78,6 +78,14 @@
   top: 50%;
 }
 
+#navigation .nav.icon {
+  transition: transform .25s ease-in-out; 
+}
+
+#navigation .nav-icon.show {
+  transform: rotate(180deg);
+}
+
 @media screen and (max-width: 1000px) {
   #iconsContainer {
     justify-content: center;

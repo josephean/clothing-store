@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ProductList from './/ProductList';
 import categories from '../data/categories';
 

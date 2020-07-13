@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesome, FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../styles/HamburgerMenuItems.css';
 
@@ -8,9 +8,6 @@ import categories from '../data/categories';
 
 export class HamburgerMenuItems extends Component {
 
-  constructor(props) {
-    super(props);
-  }
   render() {
     let categoriesList = categories;
 

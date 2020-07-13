@@ -65,6 +65,10 @@ class NavBar extends Component {
 
 
   render() {
+    let expanded = this.state.showShopMenu;
+
+    expanded = (expanded === true ? 'show' : 'hide');
+
     return(
       <div id="menu-container">
         <div id="navBar">
@@ -83,7 +87,7 @@ class NavBar extends Component {
             aria-haspopup
             aria-expanded="false"
             tabIndex="0"
-            >SHOP <FontAwesomeIcon icon={faChevronDown}/></span>
+            >SHOP <FontAwesomeIcon className={`nav-icon ${expanded}`} icon={faChevronDown}/></span>
             {this.state.showShopMenu ?
             <div id="submenu-container">
               <div className="blocker" 

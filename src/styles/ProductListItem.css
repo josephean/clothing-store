@@ -75,7 +75,7 @@
   border: 1px solid #000;
 }
 
-@media only screen and (max-width: 460px) {
+@media only screen and (max-width: 768px) {
   #productContainer {
     flex: 0.5;
     max-width: 250px;
