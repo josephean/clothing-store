@@ -17,7 +17,6 @@ export class HamburgerMenuItems extends Component {
     let topsItems = categoriesList.filter((subcategory) => subcategory.group === 'tops');
     let bottomsItems = categoriesList.filter((subcategory) => subcategory.group === 'bottoms');
     let loungewearItems = categoriesList.filter((subcategory) => subcategory.group === 'loungewear');
-    console.log('topsItems :>> ', topsItems);
     return(
       <div id="hamburgerMenuItems">
         <div className="exit" onClick={(e) => this.props.close(e)}><FontAwesomeIcon icon={faTimes}/></div>
@@ -123,8 +122,6 @@ class HamburgerSubMenu extends Component {
         </Link>
       </div>
     );
-
-    console.log('subMenuItems :>> ', subMenuItems);
     return subMenuItems;
   }
 

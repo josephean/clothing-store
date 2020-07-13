@@ -19,14 +19,11 @@ class Select extends Component {
   }
 
   toggleMenu = () => {
-    console.log('before changing state', this.state.toggle);
-    
+   
     this.setState({
       toggle: !this.state.toggle,
       rotate: !this.state.rotate,
     })
-
-    console.log('after changing state', this.state.toggle);
   }
 
   onSelect = (value) => {

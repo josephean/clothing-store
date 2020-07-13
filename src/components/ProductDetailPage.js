@@ -11,7 +11,6 @@ class ProductDetailPage extends Component {
     const sizeText = 'SELECT SIZE';
     const colorText = 'SELECT COLOR';
     const productColors = product.options ? product.options.map(option => option.color) : []; 
-    console.log('product >>> ', product);
     return (
       <div className="product-details-container">
         <div className="image" align="center"><img style={{maxWidth: "350px"}} src={product.image}></img></div>

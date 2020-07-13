@@ -30,7 +30,6 @@ export class HamburgerMenu extends Component {
 
     else this.setState({
       __visible: !this.state.__visible });
-      console.log('this.state.__visible :>> ', this.state.__visible);
   }
 
   closeMenu = (event) => {
@@ -52,8 +51,6 @@ export class HamburgerMenu extends Component {
     if (this.state.__visible === true) 
       visibility = 'show';
     else visibility = 'hide';
-
-    console.log('visibility :>> ', visibility);
 
     return(
       <div id="hamburgerMenu">

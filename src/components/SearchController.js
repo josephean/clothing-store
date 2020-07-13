@@ -24,7 +24,6 @@ class SearchController extends Component {
   }
 
   closeOverlay = event => {
-    console.log('event in close overlay :>> ', event);
     this.props.close(event);
   }
 

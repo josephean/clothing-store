@@ -29,7 +29,6 @@ class NavBar extends Component {
       if (event.key === 'Enter') 
         this.setState({ showShopMenu: !this.state.showShopMenu });
       else if (event.key === "Escape") {
-        console.log('escape key pressed');
         this.setState({ showShopMenu: false })
       }
   }
@@ -41,7 +40,6 @@ class NavBar extends Component {
 
   closeShopMenu = (event) => {
     if (event.key) {
-      console.log('key pressed!');
       if (event.key === 'Escape')
         this.setState({ showShopMenu: false });
     }
@@ -52,7 +50,6 @@ class NavBar extends Component {
   } 
 
   toggleSearchOverlay = (event) => {
-    console.log('event :>> ', event);
     if (event.key) {
       if (event.key === 'Enter') 
         this.setState({ showSearch: !this.state.showSearch });

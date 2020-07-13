@@ -28,7 +28,6 @@ class QuantityCounter extends Component {
   }
 
   render() {
-    console.log('quantity >>>', this.state.quantity);
     return (
       <div className="count-container">
         <button className="button" onClick={this.decrement}>-</button>
