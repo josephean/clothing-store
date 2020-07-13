@@ -1,0 +1,57 @@
+#hamburgerMenuItems {
+  padding: 1rem;
+}
+
+#hamburgerMenuItems .exit {
+  padding-bottom: 1rem;
+}
+.hamburger-menu-item {
+  display: flex;
+  padding: 1rem;
+  background-color: transparent;
+  transition: border .2s ease-in-out;
+}
+
+.hamburger-menu-text {
+  flex: 1;
+}
+
+.nav-item {
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+}
+
+.nav-item-icon:hover{
+  cursor: pointer;
+}
+
+.hamburger-menu-item:hover {
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  cursor: pointer;
+}
+
+/* --- submenu styling */
+
+#menu-item-container {
+  display: block;
+}
+#hamburgerSubMenuContainer {
+  padding: 1rem 2rem;
+}
+
+#hamburgerSubMenuContainer .hamburger-menu-item:hover {
+  border: 0px;
+}
+
+.sub-menu-item {
+  text-decoration: none;
+  color: #000;
+}
+
+.sub-menu-item:hover {
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid #000;
+}

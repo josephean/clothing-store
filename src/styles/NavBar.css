@@ -3,24 +3,29 @@
   background-color: #000;
   top: 0px;
   position: relative;
-  padding: 1rem;
+  padding: 2rem;
   display: block;
 }
 
 .title-container {
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .title {
   color: #fff;
-  font-size: 64px;
+  font-size: 48px;
   font-weight: bolder;
   text-decoration: none;
+  flex: 1;
 }
 
 .tagline {
-  font-size: 16px;
+  font-size: 14px;
   color: #f0f0f0;
+  font-weight: normal;
 }
 
 #nav-and-icons {
@@ -32,7 +37,6 @@
 #navigation {
   display: flex;
   flex: 1;
-  padding: 1rem;
 }
 
 #navigation ul {
@@ -63,16 +67,25 @@
 }
 
 #iconsContainer {
-  flex: .25;
-  padding: 2rem;
+  flex: 1;
   display: flex;
-  line-height: 30px;
   justify-content: flex-end;
 }
 
 .icon {
   color: #fff;
   padding: 1rem;
+  top: 50%;
+}
+
+@media screen and (max-width: 640px) {
+  #iconsContainer {
+    justify-content: center;
+  }
+
+  #navigation {
+    display: none;
+  }
 }
 
 /* ------ submenu styling -------*/
@@ -132,5 +145,4 @@
   box-sizing: border-box;
   left: 0;
   transition: background-color .2s ease-in;
-
 }

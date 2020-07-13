@@ -11,6 +11,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { HamburgerMenu } from './components/HamburgerMenu';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
     <Router>
     <div id="app-container">
     <NavBar/>
+    <HamburgerMenu/>
         <Switch>
         <Route path="/item/:id" render={(props) => (<ProductDetailPage key={props.match.params.id} {...props}/>)}></Route>
         <Route path="/:category/:sub" render={(props) => (<CategoryPage key={props.match.params.id} {...props}/>)}></Route>

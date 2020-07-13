@@ -72,8 +72,8 @@ class NavBar extends Component {
       <div id="menu-container">
         <div id="navBar">
           <div className="title-container">
-            <div className="title"><Link to="/" style={{textDecoration: "none", color: "#ffffff"}}>metropolitan</Link></div>
-            <div className="tagline">fashion essentials for women</div>
+            <div className="title"><Link to="/" style={{textDecoration: "none", color: "#ffffff"}}>metropolitan</Link>
+            <div className="tagline">fashion essentials for women</div></div>
           </div>
           <div id="nav-and-icons">
           <div id="navigation">
