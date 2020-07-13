@@ -93,7 +93,7 @@
 #submenu-container {
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   padding: 1rem;
   left: 0;
   margin-top: 1rem;
