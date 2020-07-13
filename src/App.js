@@ -19,8 +19,8 @@ class App extends Component {
   return (
     <Router>
     <div id="app-container">
-    <NavBar/>
     <HamburgerMenu/>
+    <NavBar/>
         <Switch>
         <Route path="/item/:id" render={(props) => (<ProductDetailPage key={props.match.params.id} {...props}/>)}></Route>
         <Route path="/:category/:sub" render={(props) => (<CategoryPage key={props.match.params.id} {...props}/>)}></Route>
