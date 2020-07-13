@@ -37,13 +37,19 @@ class Select extends Component {
 
 
   render() {
+
+    let rotated = this.state.toggle;
+
+    rotated = (rotated === true ? 'up' : 'down');
+    console.log('rotated :>> ', rotated);
+
     return(
       <div id="select-container">
         <div id="select-bar" onClick={this.toggleMenu}>
           <div className="select-text">
             {this.state.__selected}
           </div>
-          <div className="select-toggle"><FontAwesomeIcon className="select-icon" icon={this.state.rotate ? faChevronUp: faChevronDown }></FontAwesomeIcon></div>
+          <div className="select-toggle"><FontAwesomeIcon className={`select-icon ${rotated}`} icon={faChevronDown}></FontAwesomeIcon></div>
         </div>
         {this.state.toggle ? <SelectMenu select={this.onSelect} items={this.props.menuItems} toggle={this.toggleMenu}/>: ''}
       </div>

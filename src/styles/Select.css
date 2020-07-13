@@ -33,9 +33,13 @@
 
 .select-icon {
   padding: 10px;
-  transition: transform .1s ease-in-out;
+  transition: transform .2s ease-in-out;
 }
 
-/* .select-icon:hover {
+.select-icon.up {
   transform: rotate(180deg);
-} */
+}
+
+.select-icon:hover {
+  cursor: pointer;
+}
