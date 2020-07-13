@@ -21,13 +21,15 @@ export class HamburgerMenuItems extends Component {
     return(
       <div id="hamburgerMenuItems">
         <div className="exit" onClick={(e) => this.props.close(e)}><FontAwesomeIcon icon={faTimes}/></div>
-        <div className="hamburger-menu-item">
+        <div>
           <Link className="nav-item" to="/" onClick={(e) => this.props.close(e)}>
-            <div className="hamburger-menu-text">
-              HOME
+            <div className="hamburger-menu-item">
+              <div className="hamburger-menu-text">
+                HOME
+              </div>
             </div>
           </Link>
-          </div>
+        </div>
         <HamburgerMenuItemWithSubMenu items={topsItems} label="TOPS" close={(e) => this.props.close(e)}/>
         <HamburgerMenuItemWithSubMenu items={bottomsItems} label="BOTTOMS" close={(e) => this.props.close(e)}/>
         <HamburgerMenuItemWithSubMenu items={loungewearItems} label="LOUNGEWEAR" close={(e) => this.props.close(e)}/>
@@ -36,20 +38,24 @@ export class HamburgerMenuItems extends Component {
           <div className="hamburger-menu-text"><span className="nav-item" to="/" onClick={(e) => this.props.close(e)}>ONE-PIECE</span></div> 
           <div className="nav-item-icon"><FontAwesomeIcon icon={faPlus}/></div>
         </div>
-        <div className="hamburger-menu-item">
+        <div>
           <Link className="nav-item" to="/" onClick={(e) => this.props.close(e)}>
-            <div className="hamburger-menu-text">
-              ABOUT
+            <div className="hamburger-menu-item">
+              <div className="hamburger-menu-text">
+                ABOUT
+              </div>
             </div>
           </Link>
-          </div>
-          <div className="hamburger-menu-item">
+        </div>
+        <div>
           <Link className="nav-item" to="/" onClick={(e) => this.props.close(e)}>
-            <div className="hamburger-menu-text">
-              CONTACT US
+            <div className="hamburger-menu-item">
+              <div className="hamburger-menu-text">
+                CONTACT US
+              </div>
             </div>
           </Link>
-          </div>
+        </div>
       </div>
     )
   }
@@ -80,9 +86,9 @@ class HamburgerMenuItemWithSubMenu extends Component {
 
   render() {
     return(
-      <div id="menu-item-container">
+      <div id="menu-item-container" onClick={this.toggleSubMenu}>
         <div className="hamburger-menu-item">
-          <div className="hamburger-menu-text"><span className="nav-item" to="/" onClick={this.toggleSubMenu}>{this.props.label}</span></div> 
+          <div className="hamburger-menu-text"><span className="nav-item" to="/">{this.props.label}</span></div> 
           <div className="nav-item-icon" onClick={this.toggleSubMenu}>
             { this.state.expanded ?
             <FontAwesomeIcon icon={faMinus}/> : <FontAwesomeIcon icon={faPlus}/>}</div>
