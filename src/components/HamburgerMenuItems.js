@@ -109,15 +109,15 @@ class HamburgerSubMenu extends Component {
 
   createSubMenuList = () => {
     const subMenuItems = this.props.items.map((item, index) => 
+    <Link 
+    className="sub-menu-item" 
+    to={item.url} 
+    key={index}
+    onClick={(e) => this.props.closeMenu(e)}>
       <div className="hamburger-menu-item">
-        <Link 
-        className="sub-menu-item" 
-        to={item.url} 
-        key={index}
-        onClick={(e) => this.props.closeMenu(e)}>
           {item.title}
-        </Link>
       </div>
+      </Link>
     );
     return subMenuItems;
   }
