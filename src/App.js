@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import '../styles/App.css'
-import Home from './Home.js';
-import NavBar from './NavBar';
+import './styles/App.css';
+import Home from './components/Home.js';
+import NavBar from './components/NavBar';
 
-import CategoryPage from './CategoryPage.js';
-import ProductDetailPage from './ProductDetailPage';
+import CategoryPage from './components/CategoryPage.js';
+import ProductDetailPage from './components/ProductDetailPage';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
-import { HamburgerMenu } from './HamburgerMenu';
+import { HamburgerMenu } from './components/HamburgerMenu';
 
 class App extends Component {
   render() {
