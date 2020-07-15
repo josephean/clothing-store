@@ -7,19 +7,42 @@ import QuantityCounter from './QuantityCounter';
 import images from '../images';
 
 class ProductDetailPage extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      __id: this.props.match.params.id,
+      __defaultImage: this.displayDefaultImage,
+    }
+
+    this.displayDefaultImage = this.displayDefaultImage.bind(this);
+  }
+
+  displayDefaultImage = () => {
+    const productOptions = images.products.find(product => product.id === parseInt(this.state.__id)).options;
+    const imageOption = productOptions.find(option => option.defaultImage === true);
+
+    console.log('imageOptions.src :>> ', imageOption.src);
+    return imageOption.src;
+  }
+
+
   render(){ 
-    const __currentId = parseInt(this.props.match.params.id);
-    const product = data.allItems.find(item => item.id === __currentId);
+    const __id = parseInt(this.state.__id);
+    const product = data.allItems.find(item => item.id === __id);
     const sizeText = 'SELECT SIZE';
     const colorText = 'SELECT COLOR';
     const productColors = product.options ? product.options.map(option => option.color) : []; 
-    const options = images.products.find(product => product.id === __currentId).options;
+    
+    
+    const options = images.products.find(product => product.id === __id).options;
     const imageOptions = options.find(option => option.defaultImage === true);
     const imageDisplayed = imageOptions.src;
 
     return (
       <div className="product-details-container">
-        <div className="image" align="center"><img style={{maxWidth: "350px"}} src={imageDisplayed}></img></div>
+        <div className="image" align="center"><img style={{maxWidth: "350px"}} src={this.displayDefaultImage()}></img></div>
         <div className="details-view">
           <h1>{product.name}</h1>
           <div className="price">${product.price}</div>
