@@ -19,15 +19,42 @@ class ProductDetailPage extends Component {
     }
 
     this.displayDefaultImage = this.displayDefaultImage.bind(this);
+    this.displaySelectedImage = this.displaySelectedImage.bind(this);
     this.getImage = this.getImage.bind(this);
+    this.getSize = this.getSize.bind(this);
+    this.getColor = this.getColor.bind(this);
   }
+
+  getSize = size => {
+    console.log('size :>> ', size);
+    this.setState({
+      ...this.state,
+      __selectedSize: size,
+    });
+  };
+
+  getColor = color => {
+    this.setState({
+      ...this.state,
+      __selectedColor: color,
+    });
+  };
 
   displayDefaultImage = () => {
     const productOptions = images.products.find(product => product.id === parseInt(this.state.__id)).options;
     const imageOption = productOptions.find(option => option.defaultImage === true);
 
-    console.log('imageOptions.src :>> ', imageOption.src);
-    return imageOption.src;
+    const { src } = imageOption;
+    
+    return src;
+  }
+
+  displaySelectedImage = () => {
+    const productOptions = images.products.find(product => product.id === parseInt(this.state.__id)).options;
+    const imageOption = productOptions.find(option => option.color === this.state.__selectedColor);
+    const { src } = imageOption;
+
+    return src;
   }
 
   getImage = () => {
@@ -36,6 +63,7 @@ class ProductDetailPage extends Component {
     if (selectedColor === '') {
       return this.displayDefaultImage();
     }
+    else return this.displaySelectedImage();
   }
 
 
@@ -53,8 +81,8 @@ class ProductDetailPage extends Component {
           <h1>{product.name}</h1>
           <div className="price">${product.price}</div>
           <div className="counter"><QuantityCounter/> <button className="add-to-bag">Add to bag</button></div>
-          <div className="select"><Select placeholder={sizeText} menuItems={product.sizes}/></div>
-          <div className="select"><Select placeholder={colorText} menuItems={productColors}/></div>
+          <div className="select"><Select placeholder={sizeText} menuItems={product.sizes} value={this.getSize}/></div>
+          <div className="select"><Select placeholder={colorText} menuItems={productColors} value={this.getColor}/></div>
           <div className="description"><h3>Description</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tristique risus et odio ornare, ac efficitur ligula dignissim. Integer imperdiet volutpat mollis. Integer in congue ex. Suspendisse nec massa non erat feugiat efficitur. Cras at metus nec massa maximus lacinia. Vestibulum euismod pellentesque ex dignissim tempor. Vestibulum ut magna vulputate, hendrerit neque at, malesuada enim. Cras luctus dolor sit amet magna facilisis consectetur. Nam interdum elementum eleifend. Aenean diam nulla, venenatis a augue non, rhoncus bibendum arcu. Pellentesque id interdum nunc, ac rutrum felis. Nam egestas orci at accumsan hendrerit. Sed quis neque et urna fermentum semper. Pellentesque suscipit odio urna, ac ultrices nisi pretium in. Vivamus pharetra nisl et pharetra iaculis.</div>
         </div>
       </div>);

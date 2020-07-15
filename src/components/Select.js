@@ -32,6 +32,9 @@ class Select extends Component {
       rotate: !this.state.rotate,
       __selected: value,
     });
+
+    if (this.props.value && this.props.value !== '') 
+      this.props.value(value);
   }
 
 

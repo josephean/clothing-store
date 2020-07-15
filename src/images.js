@@ -83,7 +83,7 @@ const images = {
         },
         { 
           color: 'OLIVE', 
-          src: creamCropTop,
+          src: oliveCropTop,
           defaultImage: false, 
         },
       ]
