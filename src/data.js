@@ -1,22 +1,22 @@
-import polkaDotDress from './products/Summer-Chiffon-Dress-Polka-Dot.png';
-import floralRomper from './products/Floral-Romper.png';
-import chiffonRomper from './products/black-chiffon-romper.png';
-import creamCropTop from './products/cream-crop-top.png';
-import oliveCropTop from './products/olive-crop-top.png';
+// import polkaDotDress from '../products/Summer-Chiffon-Dress-Polka-Dot.png';
+// import floralRomper from '../public/products/Floral-Romper.png';
+// import chiffonRomper from '../public/products/black-chiffon-romper.png';
+// import creamCropTop from '../public/products/cream-crop-top.png';
+// import oliveCropTop from '../public/products/olive-crop-top.png';
 
-import whiteCrewNeck from './products/white-crewneck.png'
-import blackCrewNeck from './products/black-crewneck.png'
+// import whiteCrewNeck from '../public/products/white-crewneck.png'
+// import blackCrewNeck from '../public/products/black-crewneck.png'
 
-import whiteButtonUp from './products/white-button-up-shirt.png';
-import whiteChiffonCasualBlouse from 
-  './products/white-chiffon-casual-blouse.jpg';
-import blackChiffonCasualBlouse from 
-  './products/black-chiffon-casual-blouse.png';
+// import whiteButtonUp from '../public/products/white-button-up-shirt.png';
+// import whiteChiffonCasualBlouse from 
+//   '../public/products/white-chiffon-casual-blouse.jpg';
+// import blackChiffonCasualBlouse from 
+//   '../public/products/black-chiffon-casual-blouse.png';
 
-import whiteChiffonTank from './products/white-chiffon-tank.png';
-import blackChiffonTank from './products/black-chiffon-tank.png';
-import coffeeChiffonTank from './products/coffee-chiffon-tank.png';
-import armyGreenChiffonTank from './products/army-green-chiffon-tank.jpg';
+// import whiteChiffonTank from '../public/products/white-chiffon-tank.png';
+// import blackChiffonTank from '../public/products/black-chiffon-tank.png';
+// import coffeeChiffonTank from '../public/products/coffee-chiffon-tank.png';
+// import armyGreenChiffonTank from '../public/products/army-green-chiffon-tank.jpg';
 
 
 
@@ -24,62 +24,61 @@ const data = {
   allItems: [
     { 
       id: 1,
-      image: polkaDotDress,
+      image: '/products/Summer-Chiffon-Dress-Polka-Dot.png',
       category: `ONE-PIECE`,
       name: 'Polka Dot Chiffon Dress',
       price: 20,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
       options: [
-        { color: 'BLACK', image: polkaDotDress }
+        { color: 'BLACK', image: '/products/Summer-Chiffon-Dress-Polka-Dot.png' }
       ]
      },
     { 
       id: 2,
-      image: floralRomper,
+      image: '/products/Floral-Romper.png',
       category: `ONE-PIECE`,
       name: 'Floral Romper',
       price: 20,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
       options: [
-        { color: 'NAVY', image: floralRomper }
+        { color: 'NAVY', image: '/products/Floral-Romper.png' }
       ]
     },
     { 
       id: 3,
-      image: chiffonRomper,
+      image: '/products/black-chiffon-romper.png',
       category: `ONE-PIECE`,
       name: 'Chiffon Ruffled Romper',
       price: 20,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
       options: [
-        { color: 'BLACK', image: chiffonRomper }
+        { color: 'BLACK', image: '/products/black-chiffon-romper.png' }
       ]
     },
     { 
       id: 4,
-      image: creamCropTop,
+      image: '/products/cream-crop-top.png',
       category: 'TOP',
       subcategory: 'tank-tops',
       name: 'Ribbed Tank Top',
       price: 15,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
       options: [
-        { color: 'CREAM', image: creamCropTop }, 
-        { color: 'OLIVE', image: oliveCropTop }
+        { color: 'CREAM', image: '/products/cream-crop-top.png' }, 
+        { color: 'OLIVE', image: '/products/olive-crop-top.png' }
       ],
-
     },
     {
       id: 5,
-      image: whiteCrewNeck,
+      image: '/products/white-crewneck.png',
       category: `TOP`,
       subcategory: 't-shirts',
       name: 'Crewneck Tee',
       price: 10,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
       options: [
-        { color: 'WHITE', image: whiteCrewNeck }, 
-        { color: 'BLACK', image: blackCrewNeck }
+        { color: 'WHITE', image: '/products/white-crewneck.png' }, 
+        { color: 'BLACK', image: '/products/black-crewneck.png' }
       ],
    }, 
   //   {
@@ -108,29 +107,29 @@ const data = {
   //  },
    {
      id: 9,
-     image: whiteChiffonCasualBlouse,
+     image: '/products/white-chiffon-casual-blouse.jpg',
      category: `TOP`,
      subcategory: 'blouses',
      name: 'Chiffon Sleeveless',
      price: 25,
      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
      options: [
-      { color: 'WHITE', image: whiteChiffonCasualBlouse }, 
-      { color: 'BLACK', image: blackChiffonCasualBlouse }
+      { color: 'WHITE', image: '/products/white-chiffon-casual-blouse.jpg' }, 
+      { color: 'BLACK', image: '/products/black-chiffon-casual-blouse.jpg' }
     ],
    },
 
    {
      id: 11,
-     image: whiteChiffonTank,
+     image: '/products/white-chiffon-tank.png',
      category: 'TOP',
      subcategory: 'tank-tops',
      name: 'Chiffon Tank',
      price: 15,
      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
      options: [
-      { color: 'WHITE', image: whiteChiffonTank }, 
-      { color: 'BLACK', image: blackChiffonTank }
+      { color: 'WHITE', image: '/products/white-chiffon-tank.png' }, 
+      { color: 'BLACK', image: '/products/black-chiffon-tank.png' }
     ],
    },
 
@@ -146,49 +145,51 @@ const data = {
   ],
   bestSellers: [
     { 
-    id: 1,
-    image: polkaDotDress,
-    category: `ONE-PIECE`,
-    name: 'Polka Dot Chiffon Dress',
-    price: 20,
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    options: [
-      { color: 'BLACK', image: polkaDotDress }
-    ]
-   },
+      id: 1,
+      image: '/products/Summer-Chiffon-Dress-Polka-Dot.png',
+      category: `ONE-PIECE`,
+      name: 'Polka Dot Chiffon Dress',
+      price: 20,
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      options: [
+        { color: 'BLACK', image: '/products/Summer-Chiffon-Dress-Polka-Dot.png' }
+      ]
+     },
     { 
-    id: 2,
-    image: floralRomper,
-    category: `ONE-PIECE`,
-    name: 'Floral Romper',
-    price: 20,
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    options: [
-      { color: 'NAVY', image: floralRomper }
-    ]
+      id: 2,
+      image: '/products/Floral-Romper.png',
+      category: `ONE-PIECE`,
+      name: 'Floral Romper',
+      price: 20,
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      options: [
+        { color: 'NAVY', image: '/products/Floral-Romper.png' }
+      ]
     },
     { 
-    id: 3,
-    image: chiffonRomper,
-    category: `ONE-PIECE`,
-    name: 'Chiffon Ruffled Romper',
-    price: 20,
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    options: [
-      { color: 'BLACK', image: chiffonRomper }
-    ]
+      id: 3,
+      image: '/products/black-chiffon-romper.png',
+      category: `ONE-PIECE`,
+      name: 'Chiffon Ruffled Romper',
+      price: 20,
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      options: [
+        { color: 'BLACK', image: '/products/black-chiffon-romper.png' }
+      ]
     },
     { 
-    id: 4,
-    image: creamCropTop,
-    category: `TOP`,
-    name: 'Ribbed Tank Top',
-    price: 15,
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    options: [
-      { color: 'CREAM', image: creamCropTop },
-      { color: 'OLIVE', image: oliveCropTop },
-    ],
+      id: 4,
+      image: '/products/cream-crop-top.png',
+      category: 'TOP',
+      subcategory: 'tank-tops',
+      name: 'Ribbed Tank Top',
+      price: 15,
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      options: [
+        { color: 'CREAM', image: '/products/cream-crop-top.png' }, 
+        { color: 'OLIVE', image: '/products/olive-crop-top.png' }
+      ],
+
     },
   ],
 };
