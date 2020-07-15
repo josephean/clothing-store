@@ -13,13 +13,13 @@ class ProductDetailPage extends Component {
 
     this.state = {
       __id: this.props.match.params.id,
-      __defaultImage: this.displayDefaultImage,
+      __defaultImage: this.getDefaultImage,
       __selectedColor: '',
       __selectedSize: '',
     }
 
-    this.displayDefaultImage = this.displayDefaultImage.bind(this);
-    this.displaySelectedImage = this.displaySelectedImage.bind(this);
+    this.getDefaultImage = this.getDefaultImage.bind(this);
+    this.getSelectedImage = this.getSelectedImage.bind(this);
     this.getImage = this.getImage.bind(this);
     this.getSize = this.getSize.bind(this);
     this.getColor = this.getColor.bind(this);
@@ -40,7 +40,7 @@ class ProductDetailPage extends Component {
     });
   };
 
-  displayDefaultImage = () => {
+  getDefaultImage = () => {
     const productOptions = images.products.find(product => product.id === parseInt(this.state.__id)).options;
     const imageOption = productOptions.find(option => option.defaultImage === true);
 
@@ -49,7 +49,7 @@ class ProductDetailPage extends Component {
     return src;
   }
 
-  displaySelectedImage = () => {
+  getSelectedImage = () => {
     const productOptions = images.products.find(product => product.id === parseInt(this.state.__id)).options;
     const imageOption = productOptions.find(option => option.color === this.state.__selectedColor);
     const { src } = imageOption;
@@ -60,10 +60,9 @@ class ProductDetailPage extends Component {
   getImage = () => {
     const selectedColor = this.state.__selectedColor;
 
-    if (selectedColor === '') {
-      return this.displayDefaultImage();
-    }
-    else return this.displaySelectedImage();
+    return selectedColor === '' ? 
+      this.getDefaultImage() 
+      : this.getSelectedImage();
   }
 
 
