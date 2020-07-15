@@ -14,9 +14,12 @@ class ProductDetailPage extends Component {
     this.state = {
       __id: this.props.match.params.id,
       __defaultImage: this.displayDefaultImage,
+      __selectedColor: '',
+      __selectedSize: '',
     }
 
     this.displayDefaultImage = this.displayDefaultImage.bind(this);
+    this.getImage = this.getImage.bind(this);
   }
 
   displayDefaultImage = () => {
@@ -27,6 +30,14 @@ class ProductDetailPage extends Component {
     return imageOption.src;
   }
 
+  getImage = () => {
+    const selectedColor = this.state.__selectedColor;
+
+    if (selectedColor === '') {
+      return this.displayDefaultImage();
+    }
+  }
+
 
   render(){ 
     const __id = parseInt(this.state.__id);
@@ -35,14 +46,9 @@ class ProductDetailPage extends Component {
     const colorText = 'SELECT COLOR';
     const productColors = product.options ? product.options.map(option => option.color) : []; 
     
-    
-    const options = images.products.find(product => product.id === __id).options;
-    const imageOptions = options.find(option => option.defaultImage === true);
-    const imageDisplayed = imageOptions.src;
-
     return (
       <div className="product-details-container">
-        <div className="image" align="center"><img style={{maxWidth: "350px"}} src={this.displayDefaultImage()}></img></div>
+        <div className="image" align="center"><img style={{maxWidth: "350px"}} src={this.getImage()}></img></div>
         <div className="details-view">
           <h1>{product.name}</h1>
           <div className="price">${product.price}</div>
