@@ -1,13 +1,22 @@
 import React from 'react';
 import '../styles/ProductListItem.css';
+import images from '../images';
+
 
 import { Link } from 'react-router-dom';
 const ProductListItem = props => {
+
+  const options = images.products.find(product => product.id === props.item.id).options;
+  const imageOptions = options.find(option => option.defaultImage === true);
+  const imageDisplayed = imageOptions.src;
+
+  console.log('imageDisplayed :>> ', imageDisplayed);
+
   return (
   <div id="productContainer">
     <div className="img">
       <Link className="item-link" to={'/item/' + props.item.id}>
-        <img className="product-image" alt="placeholder" src={props.item.image}></img>
+        <img className="product-image" alt="placeholder" src={imageDisplayed}></img>
       </Link>
     </div>
     <div className="product-text">

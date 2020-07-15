@@ -4,6 +4,8 @@ import data from '../data';
 import Select from './Select';
 import QuantityCounter from './QuantityCounter';
 
+import images from '../images';
+
 class ProductDetailPage extends Component {
   render(){ 
     const __currentId = parseInt(this.props.match.params.id);
@@ -11,9 +13,13 @@ class ProductDetailPage extends Component {
     const sizeText = 'SELECT SIZE';
     const colorText = 'SELECT COLOR';
     const productColors = product.options ? product.options.map(option => option.color) : []; 
+    const options = images.products.find(product => product.id === __currentId).options;
+    const imageOptions = options.find(option => option.defaultImage === true);
+    const imageDisplayed = imageOptions.src;
+
     return (
       <div className="product-details-container">
-        <div className="image" align="center"><img style={{maxWidth: "350px"}} src={product.image}></img></div>
+        <div className="image" align="center"><img style={{maxWidth: "350px"}} src={imageDisplayed}></img></div>
         <div className="details-view">
           <h1>{product.name}</h1>
           <div className="price">${product.price}</div>

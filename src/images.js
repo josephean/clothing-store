@@ -8,6 +8,26 @@ import SkirtImage from './banners/woman-wearing-black-cardigan-gray-skirt.jpg';
 import PajamasImage from './banners/young-woman-bonding-with-partner-in-bed.jpg'
 import ActivewearImage from './banners/photo-of-woman-doing-yoga.jpg';
 
+import polkaDotDress from './products/Summer-Chiffon-Dress-Polka-Dot.png';
+import floralRomper from './products/Floral-Romper.png';
+import chiffonRomper from './products/black-chiffon-romper.png';
+import creamCropTop from './products/cream-crop-top.png';
+import oliveCropTop from './products/olive-crop-top.png';
+
+import whiteCrewNeck from './products/white-crewneck.png'
+import blackCrewNeck from './products/black-crewneck.png'
+
+import whiteButtonUp from './products/white-button-up-shirt.png';
+import whiteChiffonCasualBlouse from 
+  './products/white-chiffon-casual-blouse.jpg';
+import blackChiffonCasualBlouse from 
+  './products/black-chiffon-casual-blouse.png';
+
+import whiteChiffonTank from './products/white-chiffon-tank.png';
+import blackChiffonTank from './products/black-chiffon-tank.png';
+import coffeeChiffonTank from './products/coffee-chiffon-tank.png';
+import armyGreenChiffonTank from './products/army-green-chiffon-tank.jpg';
+
 
 const images = { 
   banners: [ 
@@ -21,6 +41,55 @@ const images = {
      { type: 'pajamas', src: PajamasImage },
      { type: 'activewear', src: ActivewearImage },
   ],
+
+  products: [
+    { 
+      id: 1,
+      options: [
+        { 
+          color: 'BLACK', 
+          src: polkaDotDress, 
+          defaultImage: true, 
+        }
+      ]
+    },
+    { 
+      id: 2,
+      options: [
+        { 
+          color: 'NAVY', 
+          src: floralRomper, 
+          defaultImage: true, 
+        }
+      ]
+    },
+    { 
+      id: 3,
+      options: [
+        { 
+          color: 'BLACK', 
+          src: chiffonRomper, 
+          defaultImage: true, 
+        }
+      ]
+    },
+    { 
+      id: 4,
+      options: [
+        { 
+          color: 'CREAM', 
+          src: creamCropTop, 
+          defaultImage: true, 
+        },
+        { 
+          color: 'OLIVE', 
+          src: creamCropTop, 
+        },
+      ]
+    },
+  
+    
+  ]
 }
 
 
