@@ -42,9 +42,9 @@ class ProductDetailPage extends Component {
 
   getDefaultImage = () => {
     const productOptions = images.products.find(product => product.id === parseInt(this.state.__id)).options;
-    const imageOption = productOptions.find(option => option.defaultImage === true);
+    const image = productOptions[0];
 
-    const { src } = imageOption;
+    const { src } = image;
     
     return src;
   }

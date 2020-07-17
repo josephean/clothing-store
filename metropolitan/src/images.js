@@ -46,48 +46,55 @@ const images = {
     { 
       id: 1,
       options: [
-        { 
-          color: 'BLACK', 
-          src: polkaDotDress, 
-          defaultImage: true, 
-        }
+        { color: 'BLACK', src: polkaDotDress }
       ]
     },
     { 
       id: 2,
       options: [
-        { 
-          color: 'NAVY', 
-          src: floralRomper, 
-          defaultImage: true, 
-        }
+        { color: 'NAVY', src: floralRomper }
       ]
     },
     { 
       id: 3,
       options: [
-        { 
-          color: 'BLACK', 
-          src: chiffonRomper, 
-          defaultImage: true, 
-        }
+        { color: 'BLACK', src: chiffonRomper}
       ]
     },
     { 
       id: 4,
       options: [
-        { 
-          color: 'CREAM', 
-          src: creamCropTop, 
-          defaultImage: true, 
-        },
-        { 
-          color: 'OLIVE', 
-          src: oliveCropTop,
-          defaultImage: false, 
-        },
+        { color: 'CREAM', src: creamCropTop },
+        { color: 'OLIVE', src: oliveCropTop },
       ]
     },
+    {
+      id: 5,
+      options: [
+        { color: 'WHITE', src: whiteCrewNeck }, 
+        { color: 'BLACK', src: blackCrewNeck }
+      ],
+   }, 
+    {
+      id: 6,
+      options: [
+        { color: 'WHITE', src: whiteButtonUp}, 
+      ],
+   }, 
+    {
+      id: 7,
+      options: [
+        { color: 'WHITE', src: whiteChiffonCasualBlouse }, 
+        { color: 'BLACK', src: blackChiffonCasualBlouse }
+      ],
+   }, 
+    {
+      id: 8,
+      options: [
+        { color: 'WHITE', src: whiteChiffonTank }, 
+        { color: 'BLACK', src: blackChiffonTank }
+      ],
+   }, 
   
     
   ]

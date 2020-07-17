@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductList from './/ProductList';
+import ProductList from './ProductList';
 import categories from '../data/categories';
 
 import '../styles/CategoryPage.css';

@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 const ProductListItem = props => {
 
   const options = images.products.find(product => product.id === props.item.id).options;
-  const imageOptions = options.find(option => option.defaultImage === true);
-  const imageDisplayed = imageOptions.src;
+  const image = options[0];
+  const imageDisplayed = image.src;
 
   console.log('imageDisplayed :>> ', imageDisplayed);
 

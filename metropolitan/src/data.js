@@ -67,81 +67,59 @@ const data = {
         { color: 'CREAM' }, 
         { color: 'OLIVE' }
       ],
-
     },
-  //   {
-  //     id: 5,
-  //     image: whiteCrewNeck,
-  //     category: `TOP`,
-  //     subcategory: 't-shirts',
-  //     name: 'Crewneck Tee',
-  //     price: 10,
-  //     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-  //     options: [
-  //       { color: 'WHITE', image: whiteCrewNeck }, 
-  //       { color: 'BLACK', image: blackCrewNeck }
-  //     ],
-  //  }, 
-  // //   {
-  // //     id: 6,
-  // //     image: blackCrewNeck,
-  // //     category: `TOP`,
-  // //     subcategory: 't-shirts',
-  // //     name: 'Crewneck Tee - Black',
-  // //     price: 10,
-  // //  }, 
-  // //  {
-  // //    id: 7,
-  // //    image: oliveCropTop,
-  // //    category: `TOP`,
-  // //    subcategory: 'tank-tops',
-  // //    name: 'Ribbed Tank Top - Olive',
-  // //    price: 15,
-  // //  },
-  // //  {
-  // //    id: 8,
-  // //    image: whiteButtonUp,
-  // //    category: `TOP`,
-  // //    subcategory: 'blouses',
-  // //    name: 'Button Up - White',
-  // //    price: 30,
-  // //  },
-  //  {
-  //    id: 9,
-  //    image: whiteChiffonCasualBlouse,
-  //    category: `TOP`,
-  //    subcategory: 'blouses',
-  //    name: 'Chiffon Sleeveless',
-  //    price: 25,
-  //    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-  //    options: [
-  //     { color: 'WHITE', image: whiteChiffonCasualBlouse }, 
-  //     { color: 'BLACK', image: blackChiffonCasualBlouse }
-  //   ],
-  //  },
+    {
+      id: 5,
+      image: whiteCrewNeck,
+      category: `TOP`,
+      subcategory: 't-shirts',
+      name: 'Crewneck Tee',
+      price: 10,
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      options: [
+        { color: 'WHITE' }, 
+        { color: 'BLACK', }
+      ],
+   }, 
+   {
+     id: 6,
+     image: whiteButtonUp,
+     category: `TOP`,
+     subcategory: 'blouses',
+     name: 'Button Up - White',
+     price: 30,
+     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+     options: [
+       { color: 'WHITE' },
+     ]
+   },
+   {
+     id: 7,
+     image: whiteChiffonCasualBlouse,
+     category: `TOP`,
+     subcategory: 'blouses',
+     name: 'Chiffon Sleeveless',
+     price: 25,
+     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+     options: [
+      { color: 'WHITE' }, 
+      { color: 'BLACK' }
+    ],
+   },
 
-  //  {
-  //    id: 11,
-  //    image: whiteChiffonTank,
-  //    category: 'TOP',
-  //    subcategory: 'tank-tops',
-  //    name: 'Chiffon Tank',
-  //    price: 15,
-  //    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-  //    options: [
-  //     { color: 'WHITE', image: whiteChiffonTank }, 
-  //     { color: 'BLACK', image: blackChiffonTank }
-  //   ],
-  //  },
-
-  // //  {
-  // //    id: 12,
-  // //    image: blackChiffonTank,
-  // //    category: 'TOP',
-  // //    subcategory: 'tank-tops',
-  // //    name: 'Chiffon Tank - Black',
-  // //    price: 15,
-  // //  },
+   {
+     id: 8,
+     image: whiteChiffonTank,
+     category: 'TOP',
+     subcategory: 'tank-tops',
+     name: 'Chiffon Tank',
+     price: 15,
+     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+     options: [
+      { color: 'WHITE' }, 
+      { color: 'BLACK' }
+    ],
+   },
    
   ],
   bestSellers: [
