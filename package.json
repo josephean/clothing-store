@@ -1,0 +1,29 @@
+{
+  "name": "clothing-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch backend --exec babel-node backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josephean/clothing-store.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josephean/clothing-store/issues"
+  },
+  "homepage": "https://github.com/josephean/clothing-store#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
