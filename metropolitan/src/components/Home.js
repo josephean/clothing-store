@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList';
 import bannerImg from '../banners/woman-sitting-on-top-of-building-s-edge-1755385.jpg'
 import '../styles/Home.css';
-// import data from '../data';
 import axios from 'axios';
 const Home = () => {
 

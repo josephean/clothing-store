@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../styles/ProductDetailPage.css';
-import data from '../data';
 import Select from './Select';
 import QuantityCounter from './QuantityCounter';
 
@@ -37,8 +36,8 @@ class ProductDetailPage extends Component {
       if (data) 
         this.setState({
           ...this.state,
-          products: data,
           loading: false,
+          products: data,
         });
     } catch(error) {
       console.log('error :>> ', error);
@@ -47,11 +46,6 @@ class ProductDetailPage extends Component {
 
   componentDidMount() {
     this.fetchData();
-    this.setState({
-      ...this.state,
-      loading: false,
-    })
-    console.log('mounted!');
   }
 
   getSize = size => {
@@ -94,11 +88,10 @@ class ProductDetailPage extends Component {
       : this.getSelectedImage();
   }
 
-
-  render(){ 
-    console.log('this.state.products :>> ', this.state.products);
-
-    const products = data.allItems;
+  renderProductInfo = data => {
+    console.log('this.state :>> ', this.state);
+    const products = data;
+    console.log('products :>> ', products);
     const __id = parseInt(this.state.__id);
     const product = products.find(item => item.id === __id);
     console.log('product :>> ', product);
@@ -118,7 +111,17 @@ class ProductDetailPage extends Component {
           <div className="description"><h3>Description</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tristique risus et odio ornare, ac efficitur ligula dignissim. Integer imperdiet volutpat mollis. Integer in congue ex. Suspendisse nec massa non erat feugiat efficitur. Cras at metus nec massa maximus lacinia. Vestibulum euismod pellentesque ex dignissim tempor. Vestibulum ut magna vulputate, hendrerit neque at, malesuada enim. Cras luctus dolor sit amet magna facilisis consectetur. Nam interdum elementum eleifend. Aenean diam nulla, venenatis a augue non, rhoncus bibendum arcu. Pellentesque id interdum nunc, ac rutrum felis. Nam egestas orci at accumsan hendrerit. Sed quis neque et urna fermentum semper. Pellentesque suscipit odio urna, ac ultrices nisi pretium in. Vivamus pharetra nisl et pharetra iaculis.</div>
         </div>
       </div>);
-    }
+  }
+
+
+  render() { 
+    console.log('this.state :>> ', this.state);
+    return (
+     this.state.loading === true ? 
+      <div>Loading...</div> 
+      : this.renderProductInfo(this.state.products)
+    )
+  }
 }
 
 export default ProductDetailPage;
