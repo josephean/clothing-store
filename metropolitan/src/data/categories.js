@@ -1,12 +1,11 @@
 import images from '../images';
-import data from '../data';
 
-const mapBanners = (name) => { 
+const mapBanners = name => { 
   return images.banners.find(img => img.type === name);
 }
 
-const mapItems = (type) => {
-  return data.allItems.filter(item => item.subcategory === type);
+const mapItems = (type, data) => {
+  return data.filter(item => item.subcategory === type);
 }
 const categories = [
   { 
@@ -14,7 +13,7 @@ const categories = [
     title: 'T-Shirts',
     group: 'tops',
     getBanner: () =>  mapBanners('t-shirts').src,
-    getItems: () => mapItems('t-shirts'),
+    getItems: data => mapItems('t-shirts', data),
     url: '/tops/t-shirts',
   },
   { 
@@ -22,7 +21,7 @@ const categories = [
     title: 'Blouses',
     group: 'tops',
     getBanner: () =>  mapBanners('blouses').src,
-    getItems: () => mapItems('blouses'),
+    getItems: data => mapItems('blouses', data),
     url: '/tops/blouses',
   },
   { 
@@ -30,7 +29,7 @@ const categories = [
     title: 'Tank Tops',
     group: 'tops',
     getBanner: () =>  mapBanners('tank-tops').src,
-    getItems: () => mapItems('tank-tops'),
+    getItems: data => mapItems('tank-tops', data),
     url: '/tops/tank-tops',
   },
   { 
@@ -38,7 +37,7 @@ const categories = [
     title: 'Jeans',
     group: 'bottoms',
     getBanner: () =>  mapBanners('jeans').src,
-    getItems: () => mapItems('jeans'),
+    getItems: data => mapItems('jeans', data),
     url: '/bottoms/jeans',
   },
   { 
@@ -46,7 +45,7 @@ const categories = [
     title: 'Pants',
     group: 'bottoms',
     getBanner: () =>  mapBanners('pants').src,
-    getItems: () => mapItems('pants'),
+    getItems: data => mapItems('pants', data),
     url: '/bottoms/pants',
   },
   { 
@@ -54,7 +53,7 @@ const categories = [
     title: 'Shorts',
     group: 'bottoms',
     getBanner: () =>  mapBanners('shorts').src,
-    getItems: () => mapItems('shorts'),
+    getItems: data => mapItems('shorts', data),
     url: '/bottoms/shorts',
   },
   { 
@@ -62,7 +61,7 @@ const categories = [
     title: 'Skirts',
     group: 'bottoms',
     getBanner: () =>  mapBanners('skirts').src,
-    getItems: () => mapItems('skirts'),
+    getItems: data => mapItems('skirts', data),
     url: '/bottoms/skirts',
   },
   { 
@@ -70,7 +69,7 @@ const categories = [
     title: 'Pajamas',
     group: 'loungewear',
     getBanner: () =>  mapBanners('pajamas').src,
-    getItems: () => mapItems('pajamas'),
+    getItems: data => mapItems('pajamas', data),
     url: '/loungewear/pajamas',
   },
   { 
@@ -78,7 +77,7 @@ const categories = [
     title: 'Activewear',
     group: 'loungewear',
     getBanner: () =>  mapBanners('activewear').src,
-    getItems: () => mapItems('activewear'),
+    getItems: data => mapItems('activewear', data),
     url: '/loungewear/activewear',
   },
 ];

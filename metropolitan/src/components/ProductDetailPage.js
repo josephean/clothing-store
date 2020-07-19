@@ -5,6 +5,8 @@ import Select from './Select';
 import QuantityCounter from './QuantityCounter';
 
 import images from '../images';
+import axios from 'axios';
+
 
 class ProductDetailPage extends Component {
 
@@ -16,13 +18,40 @@ class ProductDetailPage extends Component {
       __defaultImage: this.getDefaultImage,
       __selectedColor: '',
       __selectedSize: '',
+      products: [],
+      loading: true,
     }
 
+    this.fetchData = this.fetchData.bind(this);
     this.getDefaultImage = this.getDefaultImage.bind(this);
     this.getSelectedImage = this.getSelectedImage.bind(this);
     this.getImage = this.getImage.bind(this);
     this.getSize = this.getSize.bind(this);
     this.getColor = this.getColor.bind(this);
+  }
+
+  fetchData = async () => {
+    try {
+      const { data } = await axios.get('/api/products');
+      console.log('data :>> ', data);
+      if (data) 
+        this.setState({
+          ...this.state,
+          products: data,
+          loading: false,
+        });
+    } catch(error) {
+      console.log('error :>> ', error);
+    }
+  }
+
+  componentDidMount() {
+    this.fetchData();
+    this.setState({
+      ...this.state,
+      loading: false,
+    })
+    console.log('mounted!');
   }
 
   getSize = size => {
@@ -67,8 +96,12 @@ class ProductDetailPage extends Component {
 
 
   render(){ 
+    console.log('this.state.products :>> ', this.state.products);
+
+    const products = data.allItems;
     const __id = parseInt(this.state.__id);
-    const product = data.allItems.find(item => item.id === __id);
+    const product = products.find(item => item.id === __id);
+    console.log('product :>> ', product);
     const sizeText = 'SELECT SIZE';
     const colorText = 'SELECT COLOR';
     const productColors = product.options ? product.options.map(option => option.color) : []; 

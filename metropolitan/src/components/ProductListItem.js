@@ -10,8 +10,6 @@ const ProductListItem = props => {
   const image = options[0];
   const imageDisplayed = image.src;
 
-  console.log('imageDisplayed :>> ', imageDisplayed);
-
   return (
   <div id="productContainer">
     <div className="img">
