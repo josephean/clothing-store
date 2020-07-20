@@ -25,7 +25,7 @@ class SearchList extends Component {
         onClick={(e) => this.close(e)} 
         className="item-link" 
         >
-          <SearchItem value={item}/>
+          <SearchItem id={item.id.toString()} value={item}/>
         </Link>);
 
       return listItems; 

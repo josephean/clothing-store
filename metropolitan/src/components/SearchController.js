@@ -3,7 +3,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/SearchController.css';
 import SearchList from './SearchList';
-import data from '../data';
+import axios from 'axios';
 class SearchController extends Component {
 
   constructor(props) {
@@ -11,8 +11,9 @@ class SearchController extends Component {
 
     this.state = {
       __searchValue: '',
-      __allItems: data.allItems,
+      __allItems: [],
       __filteredItems: [],
+      __products: [],
     }
 
     this.closeOverlay = this.closeOverlay.bind(this);
@@ -21,6 +22,24 @@ class SearchController extends Component {
 
   }
 
+  fetchData = async () => {
+    try {
+      const { data } = await axios.get('/api/products');
+      console.log('data :>> ', data);
+      if (data) 
+        this.setState({
+          ...this.state,
+          __products: data,
+        });
+      } catch(error) {
+        console.log('error :>> ', error);
+    }
+  }
+
+  componentDidMount = () => {
+    this.fetchData();
+    console.log('mounted!');
+  }
   closeOverlay = event => {
 
     this.props.close(event);
@@ -28,10 +47,10 @@ class SearchController extends Component {
 
   handleSearch = e => {
     const search = e.target.value.toLowerCase();
-
+    const allProducts = this.state.__products;
     this.setState({
       __searchValue: search,
-      __filteredItems: data.allItems.filter(item =>   
+      __filteredItems: allProducts.filter(item =>   
         {
           let name = item.name.toLowerCase();
           return name.includes(search)
