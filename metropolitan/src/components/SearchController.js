@@ -46,13 +46,13 @@ class SearchController extends Component {
   }
 
   handleSearch = e => {
-    const search = e.target.value.toLowerCase();
+    let search = e.target.value.toLowerCase();
     const allProducts = this.state.__products;
     this.setState({
       __searchValue: search,
       __filteredItems: allProducts.filter(item =>   
         {
-          let name = item.name.toLowerCase();
+          const name = item.name.toLowerCase();
           return name.includes(search)
         }),
     })

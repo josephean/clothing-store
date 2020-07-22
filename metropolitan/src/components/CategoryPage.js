@@ -26,7 +26,7 @@ const CategoryPage = props => {
   }, []);
   const __category = props.match.params.sub;
 
-  let categoryData = categories.find(cat => cat.name === __category);
+  const categoryData = categories.find(cat => cat.name === __category);
   return (
     <div id="container">
     <div id="content">

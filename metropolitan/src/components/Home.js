@@ -3,35 +3,40 @@ import ProductList from './ProductList';
 import bannerImg from '../banners/woman-sitting-on-top-of-building-s-edge-1755385.jpg'
 import '../styles/Home.css';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { listProducts } from '../actions/productActions';
 const Home = () => {
 
-  const [products, setProduct] = useState([]);
+  // const [products, setProduct] = useState([]);
+  const productList = useSelector(state => state.productList);
+
+  const { products, loading, error } = productList;
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get('/api/products');
-      console.log('data :>> ', data);
-      setProduct(data);
-      console.log('products :>> ', products);
-    }
-
-    fetchData();
+    dispatch(listProducts());
     return () => {
-      //
     };
   }, []);
+
+  const renderTopPicks = () => {
+    const topPicks = products.filter(product => product.topPick === true);
+
+    return (
+      <div className="items">
+      <ProductList 
+      productType={topPicks}/>
+      </div>)
+  }
   
-  const topPicks = products.filter(product => product.topPick === true);
 return (
     <div id="container">
       <div id="content">
         <div className="banner"><img className="banner-image" alt="makeup brushes" src={bannerImg}></img></div>
         <div id="main-content">
           <div className="header"><h1>Top Picks</h1></div>
-          <div className="items">
-            <ProductList 
-            productType={topPicks}/>
-          </div>
+          {loading ? <div>Loading...</div> : error ? <div>{error}</div> : renderTopPicks()}
         </div>
       </div>
     </div>
