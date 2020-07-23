@@ -1,62 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Select.css';
 import SelectMenu from './SelectMenu';
 
-class Select extends Component {
-  constructor(props) {
-    super(props);
+const Select = props => {
 
-    this.state = {
-      toggle: false,
-      rotate: false,
-      __selected: this.props.placeholder,
-    }
+  const [ toggle, setToggle ] = useState(false);
+  const [ rotate, setRotate ] = useState(false);
+  const [ selected, setSelected ] = useState(props.placeholder);
 
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.onSelect = this.onSelect.bind(this);
+  const toggleMenu = () => {
+    setToggle(!toggle);
+    setRotate(!rotate);
   }
 
-  toggleMenu = () => {
-   
-    this.setState({
-      toggle: !this.state.toggle,
-      rotate: !this.state.rotate,
-    })
-  }
+  const onSelect = (value) => {
+    toggleMenu();
+    setSelected(value);
 
-  onSelect = (value) => {
-    this.setState({
-      toggle: !this.state.toggle,
-      rotate: !this.state.rotate,
-      __selected: value,
-    });
-
-    if (this.props.value && this.props.value !== '') 
-      this.props.value(value);
+    if (props.value && props.value !== '') 
+      props.value(value);
   }
 
 
 
-  render() {
-
-    let expanded = this.state.toggle;
+    let expanded = toggle;
 
     expanded = (expanded === true ? 'up' : 'down');
 
-    return(
-      <div id="select-container">
-        <div id="select-bar" onClick={this.toggleMenu}>
-          <div className="select-text">
-            {this.state.__selected}
-          </div>
-          <div className="select-toggle"><FontAwesomeIcon className={`select-icon ${expanded}`} icon={faChevronDown}></FontAwesomeIcon></div>
+  return(
+    <div id="select-container">
+      <div id="select-bar" onClick={toggleMenu}>
+        <div className="select-text">
+          {selected}
         </div>
-        {this.state.toggle ? <SelectMenu select={this.onSelect} items={this.props.menuItems} toggle={this.toggleMenu}/>: ''}
+        <div className="select-toggle"><FontAwesomeIcon className={`select-icon ${expanded}`} icon={faChevronDown}></FontAwesomeIcon></div>
       </div>
-    );
-  };
+      {toggle ? <SelectMenu select={onSelect} items={props.menuItems} toggle={toggleMenu}/>: ''}
+    </div>
+  );
 };
 
 export default Select;

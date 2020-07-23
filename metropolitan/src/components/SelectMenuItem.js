@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/SelectMenuItem.css';
 
-class SelectMenuItem extends Component {
+const SelectMenuItem = props => {
   
-  render() {
-    return(
-    <div id="select-item-container" onClick={() => this.props.select(this.props.value)}>
-      {this.props.value}
-    </div>)
-  }
+  return(
+    <div id="select-item-container" onClick={() => props.select(props.value)}>
+      {props.value}
+    </div>
+  )
 }
 
 export default SelectMenuItem;
