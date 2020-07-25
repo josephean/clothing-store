@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import '../styles/NavBar.css';
 import { faSearch, faShoppingBag, faUser, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,65 +9,47 @@ import {
 
 import SearchController from './SearchController';
 
-class NavBar extends Component {
+const NavBar = () => {
 
-  constructor(props) {
-    super(props);
+  const [ showShopMenu, toggleMenu ] = useState(false);
+  const [ showSearch, toggleSearch ] = useState(false);
 
-    this.state = {
-      showShopMenu: false,
-      showSearch: false,
-    }
-
-    this.toggleShopMenu = this.toggleShopMenu.bind(this);
-    this.toggleSearchOverlay = this.toggleSearchOverlay.bind(this);
-    this.closeShopMenu = this.closeShopMenu.bind(this);
-  };
-
-  toggleShopMenu = (event) => {
+  const toggleShopMenu = (event) => {
     if (event.key) {
       if (event.key === 'Enter') 
-        this.setState({ showShopMenu: !this.state.showShopMenu });
+        toggleMenu(!showShopMenu);
       else if (event.key === "Escape") {
-        this.setState({ showShopMenu: false })
+        toggleMenu(false);
       }
   }
 
-    else this.setState({
-      showShopMenu: !this.state.showShopMenu,
-    });
+    else toggleMenu(!showShopMenu);
   }
 
-  closeShopMenu = (event) => {
+  const closeShopMenu = (event) => {
     if (event.key) {
       if (event.key === 'Escape')
-        this.setState({ showShopMenu: false });
+        toggleMenu(false);
     }
 
-    else this.setState({
-      showShopMenu: false,
-    });
+    else toggleMenu(false);
   } 
 
-  toggleSearchOverlay = (event) => {
+  const toggleSearchOverlay = (event) => {
     if (event.key) {
       if (event.key === 'Enter') 
-        this.setState({ showSearch: !this.state.showSearch });
+        toggleSearch(!showSearch);
       else if (event.key === 'Escape')
-        this.setState({ showSearch: false });
+        toggleSearch(false);
     }
     
     else 
-    this.setState({
-      showSearch: !this.state.showSearch,
-    })
+    toggleSearch(!showSearch);
   }
 
+  let expanded = showShopMenu;
 
-  render() {
-    let expanded = this.state.showShopMenu;
-
-    expanded = (expanded === true ? 'show' : 'hide');
+  expanded = (expanded === true ? 'show' : 'hide');
 
     return(
       <div id="menu-container">
@@ -82,18 +64,18 @@ class NavBar extends Component {
             <li><Link className="nav-link" to="/">HOME</Link></li>
             <li><span
             className="nav-link" 
-            onClick={this.toggleShopMenu}
-            onKeyDown={this.toggleShopMenu}
+            onClick={toggleShopMenu}
+            onKeyDown={toggleShopMenu}
             aria-haspopup
             aria-expanded="false"
             tabIndex="0"
             >SHOP <FontAwesomeIcon className={`nav-icon ${expanded}`} icon={faChevronDown}/></span>
-            {this.state.showShopMenu ?
+            {showShopMenu ?
             <div id="submenu-container">
               <div className="blocker" 
-              onClick={this.closeShopMenu}>
+              onClick={closeShopMenu}>
               </div>
-              <SubMenu close={this.closeShopMenu}/>
+              <SubMenu close={closeShopMenu}/>
             </div> : 
             ''}</li>
 
@@ -103,8 +85,8 @@ class NavBar extends Component {
           </div>
           <div id="iconsContainer">
             <FontAwesomeIcon 
-            onClick={this.toggleSearchOverlay}
-            onKeyDown={this.toggleSearchOverlay}
+            onClick={toggleSearchOverlay}
+            onKeyDown={toggleSearchOverlay}
             className="icon search" 
             icon={faSearch}
             tabIndex="0" 
@@ -116,118 +98,114 @@ class NavBar extends Component {
           </div>
           </div>
         </div>
-        {this.state.showSearch ? 
-        <SearchOverlay close={this.toggleSearchOverlay}/>
+        {showSearch ? 
+        <SearchOverlay close={toggleSearchOverlay}/>
         : ''}
       </div>
     )
   }
-}
 
-class SubMenu extends Component {
-  render() {
-    return(
-      <div id="categories">
-        <div className="category">
-          <h3>Tops</h3>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e) => this.props.close(e)} 
-              to="/tops/t-shirts">T-Shirts</Link>
-            </div>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e)  => this.props.close(e)}
-              onKeyDown={(e)  => this.props.close(e)} 
-              to="/tops/blouses">Blouses</Link>
-            </div>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e)  => this.props.close(e)}
-              onKeyDown={(e)  => this.props.close(e)} 
-              to="/tops/tank-tops">Tank Tops</Link>
-            </div>
-        </div>
-        <div className="category">
-        <h3>Bottoms</h3>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e) => this.props.close(e)} 
-              to="/bottoms/jeans">Jeans</Link>
-            </div>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e) => this.props.close(e)} 
-              to="/bottoms/pants">Pants</Link>
-            </div>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e) => this.props.close(e)} to="/bottoms/shorts">Shorts</Link>
-            </div>
-            <div className="item">
-              <Link className="submenu-item"
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e)  => this.props.close(e)} 
-              to="/bottoms/skirts">Skirts</Link>
-            </div>
-        </div>
-        <div className="category">
-        <h3>Loungewear</h3>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e) => this.props.close(e)} 
-              to="/loungewear/pajamas">Pajamas</Link>
-            </div>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e) => this.props.close(e)} 
-              to="/loungewear/activewear">Activewear</Link>
-            </div>
-        </div>
-        <div className="category">
-        <h3>One-Piece</h3>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e) => this.props.close(e)} 
-              to="/">Dresses</Link>
-            </div>
-            <div className="item">
-              <Link className="submenu-item"
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e) => this.props.close(e)} 
-              to="/">Jumpsuits</Link>
-            </div>
-            <div className="item">
-              <Link className="submenu-item" 
-              onClick={(e) => this.props.close(e)}
-              onKeyDown={(e) => this.props.close} 
-              to="/">Rompers</Link>
-            </div>
-        </div>
-      </div>)
-  }
-}
 
-class SearchOverlay extends Component {
-  constructor(props) {
-    super(props);
-
-    this.closeOverlay = this.closeOverlay.bind(this);
+const SubMenu = props => {
+  return(
+    <div id="categories">
+      <div className="category">
+        <h3>Tops</h3>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e) => props.close(e)} 
+            to="/tops/t-shirts">T-Shirts</Link>
+          </div>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e)  => props.close(e)}
+            onKeyDown={(e)  => props.close(e)} 
+            to="/tops/blouses">Blouses</Link>
+          </div>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e)  => props.close(e)}
+            onKeyDown={(e)  => props.close(e)} 
+            to="/tops/tank-tops">Tank Tops</Link>
+          </div>
+      </div>
+      <div className="category">
+      <h3>Bottoms</h3>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e) => props.close(e)} 
+            to="/bottoms/jeans">Jeans</Link>
+          </div>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e) => props.close(e)} 
+            to="/bottoms/pants">Pants</Link>
+          </div>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e) => props.close(e)} to="/bottoms/shorts">Shorts</Link>
+          </div>
+          <div className="item">
+            <Link className="submenu-item"
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e)  => props.close(e)} 
+            to="/bottoms/skirts">Skirts</Link>
+          </div>
+      </div>
+      <div className="category">
+      <h3>Loungewear</h3>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e) => props.close(e)} 
+            to="/loungewear/pajamas">Pajamas</Link>
+          </div>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e) => props.close(e)} 
+            to="/loungewear/activewear">Activewear</Link>
+          </div>
+      </div>
+      <div className="category">
+      <h3>One-Piece</h3>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e) => props.close(e)} 
+            to="/">Dresses</Link>
+          </div>
+          <div className="item">
+            <Link className="submenu-item"
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e) => props.close(e)} 
+            to="/">Jumpsuits</Link>
+          </div>
+          <div className="item">
+            <Link className="submenu-item" 
+            onClick={(e) => props.close(e)}
+            onKeyDown={(e) => props.close} 
+            to="/">Rompers</Link>
+          </div>
+      </div>
+    </div>)
   }
 
-  closeOverlay(event) {
-    this.props.close(event);
+const SearchOverlay = props => {
+  
+  const closeOverlay = (event) => {
+    props.close(event);
   }
-  render() {
-    return(<div className="search-overlay"><SearchController close={(e) => this.closeOverlay(e)}/></div>)
-  }
+
+  return(
+    <div className="search-overlay">
+      <SearchController close={(e) => closeOverlay(e)}/>
+    </div>
+  )
 }
 
 export default NavBar;
