@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -6,9 +6,8 @@ import '../styles/HamburgerMenuItems.css';
 
 import categories from '../data/categories';
 
-export class HamburgerMenuItems extends Component {
+export const HamburgerMenuItems = props => { 
 
-  render() {
     let categoriesList = categories;
 
     let topsItems = categoriesList.filter((subcategory) => subcategory.group === 'tops');
@@ -16,9 +15,9 @@ export class HamburgerMenuItems extends Component {
     let loungewearItems = categoriesList.filter((subcategory) => subcategory.group === 'loungewear');
     return(
       <div id="hamburgerMenuItems">
-        <div className="exit" onClick={(e) => this.props.close(e)}><FontAwesomeIcon icon={faTimes}/></div>
+        <div className="exit" onClick={(e) => props.close(e)}><FontAwesomeIcon icon={faTimes}/></div>
         <div>
-          <Link className="nav-item" to="/" onClick={(e) => this.props.close(e)}>
+          <Link className="nav-item" to="/" onClick={(e) => props.close(e)}>
             <div className="hamburger-menu-item">
               <div className="hamburger-menu-text">
                 HOME
@@ -26,16 +25,16 @@ export class HamburgerMenuItems extends Component {
             </div>
           </Link>
         </div>
-        <HamburgerMenuItemWithSubMenu items={topsItems} label="TOPS" close={(e) => this.props.close(e)}/>
-        <HamburgerMenuItemWithSubMenu items={bottomsItems} label="BOTTOMS" close={(e) => this.props.close(e)}/>
-        <HamburgerMenuItemWithSubMenu items={loungewearItems} label="LOUNGEWEAR" close={(e) => this.props.close(e)}/>
+        <HamburgerMenuItemWithSubMenu items={topsItems} label="TOPS" close={(e) => props.close(e)}/>
+        <HamburgerMenuItemWithSubMenu items={bottomsItems} label="BOTTOMS" close={(e) => props.close(e)}/>
+        <HamburgerMenuItemWithSubMenu items={loungewearItems} label="LOUNGEWEAR" close={(e) => props.close(e)}/>
         
         <div className="hamburger-menu-item">
-          <div className="hamburger-menu-text"><span className="nav-item" to="/" onClick={(e) => this.props.close(e)}>ONE-PIECE</span></div> 
+          <div className="hamburger-menu-text"><span className="nav-item" to="/" onClick={(e) => props.close(e)}>ONE-PIECE</span></div> 
           <div className="nav-item-icon"><FontAwesomeIcon icon={faPlus}/></div>
         </div>
         <div>
-          <Link className="nav-item" to="/" onClick={(e) => this.props.close(e)}>
+          <Link className="nav-item" to="/" onClick={(e) => props.close(e)}>
             <div className="hamburger-menu-item">
               <div className="hamburger-menu-text">
                 ABOUT
@@ -44,7 +43,7 @@ export class HamburgerMenuItems extends Component {
           </Link>
         </div>
         <div>
-          <Link className="nav-item" to="/" onClick={(e) => this.props.close(e)}>
+          <Link className="nav-item" to="/" onClick={(e) => props.close(e)}>
             <div className="hamburger-menu-item">
               <div className="hamburger-menu-text">
                 CONTACT US
@@ -55,65 +54,44 @@ export class HamburgerMenuItems extends Component {
       </div>
     )
   }
-}
 
-class HamburgerMenuItemWithSubMenu extends Component {
-  constructor(props) {
-    super(props);
+const HamburgerMenuItemWithSubMenu = props => {
 
-    this.state = {
-      expanded: false,
-    }
+  const [ expanded, setExpanded ] = useState(false);
 
-    this.toggleSubMenu = this.toggleSubMenu.bind(this);
-    this.closeSubMenu = this.closeSubMenu.bind(this);
+  const toggleSubMenu = () => {
+    setExpanded(!expanded);
   }
 
-  toggleSubMenu = () => {
-    this.setState({
-      expanded: !this.state.expanded,
-    });
+  const closeSubMenu = (event) => {
+    setExpanded(false);
+    props.close(event);
   }
 
-  closeSubMenu = (event) => {
-    this.setState({ expanded: false })
-    this.props.close(event);
-  }
+  console.log(props.items);
 
-  render() {
-    return(
-      <div id="menu-item-container" onClick={this.toggleSubMenu}>
-        <div className="hamburger-menu-item">
-          <div className="hamburger-menu-text"><span className="nav-item" to="/">{this.props.label}</span></div> 
-          <div className="nav-item-icon" onClick={this.toggleSubMenu}>
-            { this.state.expanded ?
-            <FontAwesomeIcon icon={faMinus}/> : <FontAwesomeIcon icon={faPlus}/>}</div>
-        </div>
-        { this.state.expanded ? <HamburgerSubMenu closeMenu={this.closeSubMenu} items={this.props.items}/> : '' }
+  return(
+    <div id="menu-item-container" onClick={toggleSubMenu}>
+      <div className="hamburger-menu-item">
+        <div className="hamburger-menu-text"><span className="nav-item" to="/">{props.label}</span></div> 
+        <div className="nav-item-icon" onClick={toggleSubMenu}>
+          { expanded ?
+          <FontAwesomeIcon icon={faMinus}/> : <FontAwesomeIcon icon={faPlus}/>}</div>
       </div>
-    )
-  }
-
+      { expanded ? <HamburgerSubMenu closeMenu={closeSubMenu} items={props.items}/> : '' }
+    </div>
+  )
 } 
 
-class HamburgerSubMenu extends Component {
-  constructor(props) {
-    super(props);
+const HamburgerSubMenu = props => {
 
-    this.state = {
-      visible: false,
-    }
-
-    this.createSubMenuList = this.createSubMenuList.bind(this);
-  }
-
-  createSubMenuList = () => {
-    const subMenuItems = this.props.items.map((item, index) => 
+  const createSubMenuList = () => {
+    const subMenuItems = props.items.map((item, index) => 
     <Link 
     className="sub-menu-item" 
     to={item.url} 
     key={index}
-    onClick={(e) => this.props.closeMenu(e)}>
+    onClick={(e) => props.closeMenu(e)}>
       <div className="hamburger-menu-item">
           {item.title}
       </div>
@@ -122,11 +100,9 @@ class HamburgerSubMenu extends Component {
     return subMenuItems;
   }
 
-  render() {
-    return(
-      <div id="hamburgerSubMenuContainer">
-        {this.createSubMenuList()}
-      </div>
-    )
-  }
+  return(
+    <div id="hamburgerSubMenuContainer">
+      {createSubMenuList()}
+    </div>
+  )
 }

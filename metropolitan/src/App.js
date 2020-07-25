@@ -13,9 +13,7 @@ import {
 } from "react-router-dom";
 import { HamburgerMenu } from './components/HamburgerMenu';
 
-class App extends Component {
-  render() {
-
+const App = () => {
   return (
     <Router>
     <div id="app-container">
@@ -29,8 +27,8 @@ class App extends Component {
         <Route path="*"><h1>404</h1></Route>
       </Switch>
       </div>
-    </Router>);
-  }
+    </Router>
+  );
 }
 
 export default App;
