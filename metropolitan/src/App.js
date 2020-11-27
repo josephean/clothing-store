@@ -4,7 +4,7 @@ import Home from './components/Home.js';
 import NavBar from './components/NavBar';
 
 import CategoryPage from './components/CategoryPage.js';
-import ProductDetailPage from './components/ProductDetailPage';
+import ProductDetailPage from './components/ProductDetailPage.js';
 
 import {
   BrowserRouter as Router,

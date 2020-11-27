@@ -68,7 +68,6 @@ const HamburgerMenuItemWithSubMenu = props => {
     props.close(event);
   }
 
-  console.log(props.items);
 
   return(
     <div id="menu-item-container" onClick={toggleSubMenu}>

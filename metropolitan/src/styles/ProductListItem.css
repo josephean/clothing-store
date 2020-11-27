@@ -1,10 +1,14 @@
 #productContainer {
   max-width: 250px;
-  box-shadow: 5px 10px 10px #e6e6e6;
   padding: 1rem;
   text-align: center;
   margin: 10px;
   box-sizing: border-box;
+  /* transition: .2s ease-in-out; */
+}
+
+#productContainer:hover {
+  border: 1px solid #f1f1f1;
 }
 
 .img {

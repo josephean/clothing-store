@@ -38,7 +38,6 @@ class SearchController extends Component {
 
   componentDidMount = () => {
     this.fetchData();
-    console.log('mounted!');
   }
   closeOverlay = event => {
 

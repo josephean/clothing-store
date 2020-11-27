@@ -7,7 +7,7 @@ const reducer = combineReducers({
   productList: productListReducer,
 }); // returns new state based on action
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() || compose;
 
 const store = createStore(reducer, initialState, composeEnhancer(applyMiddleware(thunk)));
 

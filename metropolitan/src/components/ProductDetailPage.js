@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import '../styles/ProductDetailPage.css';
 import Select from './Select';
 import QuantityCounter from './QuantityCounter';
-
 import images from '../images';
 import axios from 'axios';
+import { listProducts } from '../actions/productActions';
 
 
 class ProductDetailPage extends Component {
-
   constructor(props) {
     super(props);
 
@@ -49,7 +49,6 @@ class ProductDetailPage extends Component {
   }
 
   getSize = size => {
-    console.log('size :>> ', size);
     this.setState({
       ...this.state,
       __selectedSize: size,
@@ -89,12 +88,9 @@ class ProductDetailPage extends Component {
   }
 
   renderProductInfo = data => {
-    console.log('this.state :>> ', this.state);
     const products = data;
-    console.log('products :>> ', products);
-    const __id = parseInt(this.state.__id);
-    const product = products.find(item => item.id === __id);
-    console.log('product :>> ', product);
+    const id = parseInt(this.state.__id);
+    const product = products.find(item => item.id === id);
     const sizeText = 'SELECT SIZE';
     const colorText = 'SELECT COLOR';
     const productColors = product.options ? product.options.map(option => option.color) : []; 
@@ -105,7 +101,7 @@ class ProductDetailPage extends Component {
         <div className="details-view">
           <h1>{product.name}</h1>
           <div className="price">${product.price}</div>
-          <div className="counter"><QuantityCounter/> <button className="add-to-bag">Add to bag</button></div>
+          <div className="counter"><QuantityCounter/> <button className="add-to-bag">Add to cart</button></div>
           <div className="select"><Select placeholder={sizeText} menuItems={product.sizes} value={this.getSize}/></div>
           <div className="select"><Select placeholder={colorText} menuItems={productColors} value={this.getColor}/></div>
           <div className="description"><h3>Description</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tristique risus et odio ornare, ac efficitur ligula dignissim. Integer imperdiet volutpat mollis. Integer in congue ex. Suspendisse nec massa non erat feugiat efficitur. Cras at metus nec massa maximus lacinia. Vestibulum euismod pellentesque ex dignissim tempor. Vestibulum ut magna vulputate, hendrerit neque at, malesuada enim. Cras luctus dolor sit amet magna facilisis consectetur. Nam interdum elementum eleifend. Aenean diam nulla, venenatis a augue non, rhoncus bibendum arcu. Pellentesque id interdum nunc, ac rutrum felis. Nam egestas orci at accumsan hendrerit. Sed quis neque et urna fermentum semper. Pellentesque suscipit odio urna, ac ultrices nisi pretium in. Vivamus pharetra nisl et pharetra iaculis.</div>
@@ -115,13 +111,21 @@ class ProductDetailPage extends Component {
 
 
   render() { 
-    console.log('this.state :>> ', this.state);
+    const { loading, products } = this.props.productList;
+    console.log('loading :>> ', loading);
+    console.log('products :>> ', products);
     return (
-     this.state.loading === true ? 
+     this.state.loading ? 
       <div>Loading...</div> 
-      : this.renderProductInfo(this.state.products)
+      : products ? this.renderProductInfo(this.state.products) : ''
     )
   }
 }
 
-export default ProductDetailPage;
+const mapStateToProps = state => {
+  return ({ productList: state.productList })};
+
+
+const mapDispatchToProps = { listProducts };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailPage);

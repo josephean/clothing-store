@@ -6,8 +6,6 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { listProducts } from '../actions/productActions';
 const Home = () => {
-
-  // const [products, setProduct] = useState([]);
   const productList = useSelector(state => state.productList);
 
   const { products, loading, error } = productList;

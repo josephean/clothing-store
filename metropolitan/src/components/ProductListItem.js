@@ -23,7 +23,7 @@ const ProductListItem = props => {
         <Link className="item-link" to={'/item/' + props.item.id}>{props.item.name}</Link>
       </div>
       <div className="price">${props.item.price}</div>
-      <button className="button add-cart">Add to bag</button>
+      {/* <button className="button add-cart">Quick shop</button> */}
     </div>
     </div>);
 }
