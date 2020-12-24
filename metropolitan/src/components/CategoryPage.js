@@ -1,48 +1,77 @@
-import React, { useState, useEffect }from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ProductList from './ProductList';
 import categories from '../data/categories';
 import axios from 'axios';
+import { listProducts } from '../actions/productActions';
 
 import '../styles/CategoryPage.css';
 import Select from './Select';
 
 const SORT_OPTIONS = ['LOW TO HIGH', 'HIGH TO LOW']
 
-const CategoryPage = props => {
-  const [products, setProduct] = useState([]);
+class CategoryPage extends Component {
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get('/api/products');
-      console.log('data :>> ', data);
-      setProduct(data);
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sortMode: '',
     }
 
-    fetchData();
-    console.log('products :>> ', products);
-    return () => {
-      //
-    };
-  }, []);
-  const __category = props.match.params.sub;
+    this.__getSortMode = this.__getSortMode.bind(this);
+    this.__calculateSort = this.__calculateSort.bind(this);
+    this.__sortItems = this.__sortItems.bind(this);
+  }
 
-  const categoryData = categories.find(cat => cat.name === __category);
-  return (
-    <div id="container">
-    <div id="content">
-      <div className="banner"><img className="banner-image" src={categoryData.getBanner()}></img></div>
-        <div className="heading">
-          <div className="header"><h1>{categoryData.title}</h1></div>
-          <div className="filter-container">
+  componentWillMount() {
+    const { listProducts } = this.props;
+    listProducts();
+  }
 
-<Select placeholder="SORT BY" menuItems={SORT_OPTIONS}/>
-</div>
-        </div>
-        <div className="items">
-          <ProductList productType={categoryData.getItems(products)}/>
+  __getSortMode = mode => {
+    this.setState({ sortMode: mode });
+  }
+
+  __calculateSort = mode => {
+    switch(mode) {
+      case 'LOW TO HIGH': return 'ASC';
+      case 'HIGH TO LOW': return 'DESC';
+      default: return '';
+    }
+  }
+
+  __sortItems = (items, mode) => mode === 'ASC' ? items.sort((a, b) => a.price - b.price) : mode === 'DESC' ? items.sort((a, b) => b.price - a.price) : items;
+
+  render() {
+    const __category = this.props.match.params.sub;
+    const { loading, error, products } = this.props.productList;
+    const categoryData = categories.find(cat => cat.name === __category);
+    const sortOrder = this.__calculateSort(this.state.sortMode);
+
+    return(
+      <div id="container">
+      <div id="content">
+        <div className="banner"><img className="banner-image" src={categoryData.getBanner()}></img></div>
+          <div className="heading">
+            <div className="header"><h1>{categoryData.title}</h1></div>
+            <div className="filter-container">
+              <Select placeholder="SORT BY" menuItems={SORT_OPTIONS} value={this.__getSortMode}/>
+            </div>
+          </div>
+          <div className="items">
+            {!error ? !loading ? <ProductList productType={this.__sortItems(categoryData.getItems(products), sortOrder)}/> : 'Loading...' : error}
+          </div>
         </div>
       </div>
-    </div>);
-}
+      );
+    }
+  }
 
-export default CategoryPage;
+const mapStateToProps = state => {
+  return ({ productList: state.productList })};
+
+
+const mapDispatchToProps = { listProducts };
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage);
