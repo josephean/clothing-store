@@ -24,7 +24,6 @@ const Select = props => {
   }
 
     let expanded = toggle;
-
     expanded = (expanded === true ? 'up' : 'down');
 
   return(

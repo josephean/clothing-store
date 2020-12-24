@@ -13,6 +13,7 @@
   margin-top: 0px;
   background-color: #000;
   color: #fff;
+  font-size: 1rem;
 }
 .count-container button:hover {
   width: 50px;
