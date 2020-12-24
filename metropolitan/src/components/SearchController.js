@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/SearchController.css';
 import SearchList from './SearchList';
-import axios from 'axios';
+import { listProducts } from '../actions/productActions';
 
 class SearchController extends Component {
 
@@ -23,33 +24,22 @@ class SearchController extends Component {
 
   }
 
-  fetchData = async () => {
-    try {
-      const { data } = await axios.get('/api/products');
-      if (data) 
-        this.setState({
-          ...this.state,
-          __products: data,
-        });
-      } catch(error) {
-        console.log('error :>> ', error);
-    }
+  componentWillMount() {
+    const { listProducts } = this.props;
+    listProducts();
   }
 
-  componentDidMount = () => {
-    this.fetchData();
-  }
+
   closeOverlay = event => {
-
     this.props.close(event);
   }
 
   handleSearch = e => {
     let search = e.target.value.toLowerCase();
-    const allProducts = this.state.__products;
+    const { products } = this.props.productList;
     this.setState({
       __searchValue: search,
-      __filteredItems: allProducts.filter(item =>   
+      __filteredItems: products.filter(item =>   
         {
           const name = item.name.toLowerCase();
           return name.includes(search)
@@ -68,6 +58,7 @@ class SearchController extends Component {
   }
   
   render() {
+    const { error, loading } = this.props.productList;
     return (
     <div id="search-controller">
       <div className="blocker" onClick={(e) => this.closeOverlay(e)}></div>
@@ -87,11 +78,17 @@ class SearchController extends Component {
         </div>
 
         <div className="search-list-container">
-        {this.renderList()}
+        {!this.error ? !this.loading ? this.renderList() : 'Loading' : error}
         </div>
     </div>
     </div>);
   }
 }
 
-export default SearchController;
+const mapStateToProps = state => {
+  return ({ productList: state.productList })};
+
+
+const mapDispatchToProps = { listProducts };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchController);
