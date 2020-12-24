@@ -4,7 +4,6 @@ import '../styles/ProductDetailPage.css';
 import Select from './Select';
 import QuantityCounter from './QuantityCounter';
 import images from '../images';
-import axios from 'axios';
 import { listProducts } from '../actions/productActions';
 
 
@@ -21,7 +20,6 @@ class ProductDetailPage extends Component {
       loading: true,
     }
 
-    this.fetchData = this.fetchData.bind(this);
     this.getDefaultImage = this.getDefaultImage.bind(this);
     this.getSelectedImage = this.getSelectedImage.bind(this);
     this.getImage = this.getImage.bind(this);
@@ -29,23 +27,9 @@ class ProductDetailPage extends Component {
     this.getColor = this.getColor.bind(this);
   }
 
-  fetchData = async () => {
-    try {
-      const { data } = await axios.get('/api/products');
-      console.log('data :>> ', data);
-      if (data) 
-        this.setState({
-          ...this.state,
-          loading: false,
-          products: data,
-        });
-    } catch(error) {
-      console.log('error :>> ', error);
-    }
-  }
-
-  componentDidMount() {
-    this.fetchData();
+  componentWillMount() {
+    const { listProducts } = this.props;
+    listProducts();
   }
 
   getSize = size => {
@@ -111,13 +95,12 @@ class ProductDetailPage extends Component {
 
 
   render() { 
-    const { loading, products } = this.props.productList;
-    console.log('loading :>> ', loading);
-    console.log('products :>> ', products);
+    const { loading, products, error } = this.props.productList;
+
     return (
-     this.state.loading ? 
+     loading ? 
       <div>Loading...</div> 
-      : products ? this.renderProductInfo(this.state.products) : ''
+      : !error ? products ? this.renderProductInfo(products) : '' : {error}
     )
   }
 }

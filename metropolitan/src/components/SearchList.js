@@ -23,7 +23,7 @@ const SearchList = props => {
 
     return listItems; 
   }
-  else return (<p>{NO_RESULTS}</p>);
+  return (<p>{NO_RESULTS}</p>);
 }
 
 export default SearchList;

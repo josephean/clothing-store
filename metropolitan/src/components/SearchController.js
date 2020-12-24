@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/SearchController.css';
 import SearchList from './SearchList';
 import axios from 'axios';
+
 class SearchController extends Component {
 
   constructor(props) {
@@ -25,7 +26,6 @@ class SearchController extends Component {
   fetchData = async () => {
     try {
       const { data } = await axios.get('/api/products');
-      console.log('data :>> ', data);
       if (data) 
         this.setState({
           ...this.state,
