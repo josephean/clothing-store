@@ -8,11 +8,13 @@ import {
 } from 'react-router-dom';
 
 import SearchController from './SearchController';
+import ShoppingCartOverlay from './ShoppingCartOverlay';
 
 const NavBar = () => {
 
   const [ showShopMenu, toggleMenu ] = useState(false);
   const [ showSearch, toggleSearch ] = useState(false);
+  const [ showCart, toggleCart ] = useState(false);
 
   const toggleShopMenu = (event) => {
     if (event.key) {
@@ -47,9 +49,18 @@ const NavBar = () => {
     toggleSearch(!showSearch);
   }
 
-  let expanded = showShopMenu;
+  const toggleCartOverlay = (event) => {
+    event.stopPropagation();
+    if (event.key) {
+      if (event.key === 'Enter') toggleCart(!showCart);
+      else if (event.key === 'Escape') toggleCart(false);
+    }
+    else toggleCart(!showCart);
+  }
 
+  let expanded = showShopMenu;
   expanded = (expanded === true ? 'show' : 'hide');
+  console.log('showCart :>> ', showCart);
 
     return(
       <div id="menu-container">
@@ -93,7 +104,7 @@ const NavBar = () => {
             role="button"
             aria-pressed="false"
             size="1x"/>
-            <FontAwesomeIcon className="icon" icon={faShoppingBag} size="1x"/>
+            <FontAwesomeIcon className="icon" onClick={toggleCartOverlay} icon={faShoppingBag} size="1x"/>
             <FontAwesomeIcon className="icon" icon={faUser} size="1x"/>
           </div>
           </div>
@@ -101,6 +112,7 @@ const NavBar = () => {
         {showSearch ? 
         <SearchOverlay close={toggleSearchOverlay}/>
         : ''}
+        <ShoppingCartOverlay toggle={toggleCartOverlay} visibility={showCart}/> 
       </div>
     )
   }

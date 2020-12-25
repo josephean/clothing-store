@@ -1,0 +1,48 @@
+#cart-overlay-container .blocker {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.363);
+}
+
+.cart-container {
+  z-index: 2;
+  height: 100%;
+  max-width: 450px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: transform .3s cubic-bezier(0, .52, 0, 1);
+}
+
+.cart-container.hide {
+  transform: translate3d(100vw, 0, 0);
+}
+
+.cart-container.show {
+  transform: translate3d(-0, 0, 0);
+}
+
+.cart-container .header {
+  display: flex;
+}
+
+.cart-container .header-text {
+  flex: 2;
+}
+
+.cart-container .exit {
+  flex: 1;
+}
+
+@media screen and (max-width: 640px) {
+  .cart-container {
+    min-width: 75%;
+  }
+
+  #hamburgerMenuContainer.hide {
+    transform: translate3d(100vw, 0, 0)
+  }
+}

@@ -78,7 +78,7 @@ class SearchController extends Component {
         </div>
 
         <div className="search-list-container">
-        {!this.error ? !this.loading ? this.renderList() : 'Loading' : error}
+        {!error ? !loading ? this.renderList() : 'Loading' : error}
         </div>
     </div>
     </div>);
