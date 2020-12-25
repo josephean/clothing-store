@@ -6,7 +6,7 @@
 .cart-container {
   z-index: 2;
   height: 100%;
-  max-width: 450px;
+  min-width: 450px;
   position: fixed;
   top: 0px;
   right: 0px;
