@@ -31,7 +31,7 @@ const Home = () => {
 return (
     <div id="container">
       <div id="content">
-        <div className="banner"><img className="banner-image" alt="makeup brushes" src={bannerImg}></img></div>
+        <div className="banner"><img className="banner-image" alt="woman sitting overlooking a city view" src={bannerImg}></img></div>
         <div id="main-content">
           <div className="header"><h1>Top Picks</h1></div>
           {loading ? <div>Loading...</div> : error ? <div>{error}</div> : renderTopPicks()}

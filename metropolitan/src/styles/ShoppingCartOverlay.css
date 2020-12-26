@@ -18,7 +18,7 @@
 }
 
 .cart-container.hide {
-  transform: translate3d(100vw, 0, 0);
+  transform: translate3d(40vw, 0, 0);
 }
 
 .cart-container.show {
@@ -42,7 +42,7 @@
     min-width: 75%;
   }
 
-  #hamburgerMenuContainer.hide {
+  .cart-container.hide {
     transform: translate3d(100vw, 0, 0)
   }
 }
