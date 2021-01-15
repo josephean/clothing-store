@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/QuantityCounter.css';
 
-const QuantityCounter = () => {
+const QuantityCounter = props => {
   
   const [quantity, setQuantity] = useState(0);
 
   const decrement = () => {
     if(quantity > 0) {
       setQuantity(quantity - 1);
+      props.value(quantity);
     }
   }
 
   const increment = () => {
     setQuantity(quantity + 1);
+    props.value(quantity);
   }
+
 
   return (
     <div className="count-container">

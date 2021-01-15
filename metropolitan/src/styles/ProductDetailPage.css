@@ -52,6 +52,12 @@
   border: 1px solid black;
 }
 
+.add-to-bag.disabled {
+  pointer-events: none;
+  background-color: #c9c9c9;
+  border: 1px solid #525252;
+}
+
 .add-to-bag:hover {
   color: #fff;
   background-color: #000;

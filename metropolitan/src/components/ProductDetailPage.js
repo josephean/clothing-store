@@ -16,15 +16,19 @@ class ProductDetailPage extends Component {
       __defaultImage: this.getDefaultImage,
       __selectedColor: '',
       __selectedSize: '',
+      __quantity: 0,
       products: [],
       loading: true,
     }
 
+    this.addToBag = this.addToBag.bind(this);
+    this.isDisabled = this.isDisabled.bind(this);
     this.getDefaultImage = this.getDefaultImage.bind(this);
     this.getSelectedImage = this.getSelectedImage.bind(this);
     this.getImage = this.getImage.bind(this);
     this.getSize = this.getSize.bind(this);
     this.getColor = this.getColor.bind(this);
+    this.getQuantity = this.getQuantity.bind(this);
   }
 
   componentWillMount() {
@@ -32,18 +36,31 @@ class ProductDetailPage extends Component {
     listProducts();
   }
 
+  addToBag = () => {
+    console.log('this.state.__quantity :>> ', this.state.__quantity);
+    const qty = this.state.__quantity; 
+    const size = this.state.__selectedSize;
+    const color = this.state.__selectedColor;
+
+    
+  };
+
+  isDisabled = () => {
+    return !(this.state.__quantity && this.state.__selectedColor && this.state.__selectedColor) ? 'disabled' : '';
+  }
+
   getSize = size => {
     this.setState({
       ...this.state,
       __selectedSize: size,
-    });
+    }, () => console.log('this.state :>> ', this.state));
   };
 
   getColor = color => {
     this.setState({
       ...this.state,
       __selectedColor: color,
-    });
+    }, () => console.log('this.state :>> ', this.state));
   };
 
   getDefaultImage = () => {
@@ -63,6 +80,13 @@ class ProductDetailPage extends Component {
     return src;
   }
 
+  getQuantity = quantity => {
+    this.setState({
+      ...this.state,
+      __quantity: quantity,
+    }, () => console.log('this.state :>> ', this.state));
+  }
+
   getImage = () => {
     const selectedColor = this.state.__selectedColor;
 
@@ -71,6 +95,7 @@ class ProductDetailPage extends Component {
       : this.getSelectedImage();
   }
 
+
   renderProductInfo = data => {
     const products = data;
     const id = parseInt(this.state.__id);
@@ -78,6 +103,7 @@ class ProductDetailPage extends Component {
     const sizeText = 'SELECT SIZE';
     const colorText = 'SELECT COLOR';
     const productColors = product.options ? product.options.map(option => option.color) : []; 
+    const disabled = this.isDisabled();
     
     return (
       <div className="product-details-container">
@@ -85,7 +111,7 @@ class ProductDetailPage extends Component {
         <div className="details-view">
           <h1>{product.name}</h1>
           <div className="price">${product.price}</div>
-          <div className="counter"><QuantityCounter/> <button className="add-to-bag">Add to cart</button></div>
+          <div className="counter"><QuantityCounter value={this.getQuantity}/> <button className={`add-to-bag ${disabled}`}onClick={this.addToBag}>Add to bag</button></div>
           <div className="select"><Select placeholder={sizeText} menuItems={product.sizes} value={this.getSize}/></div>
           <div className="select"><Select placeholder={colorText} menuItems={productColors} value={this.getColor}/></div>
           <div className="description"><h3>Description</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tristique risus et odio ornare, ac efficitur ligula dignissim. Integer imperdiet volutpat mollis. Integer in congue ex. Suspendisse nec massa non erat feugiat efficitur. Cras at metus nec massa maximus lacinia. Vestibulum euismod pellentesque ex dignissim tempor. Vestibulum ut magna vulputate, hendrerit neque at, malesuada enim. Cras luctus dolor sit amet magna facilisis consectetur. Nam interdum elementum eleifend. Aenean diam nulla, venenatis a augue non, rhoncus bibendum arcu. Pellentesque id interdum nunc, ac rutrum felis. Nam egestas orci at accumsan hendrerit. Sed quis neque et urna fermentum semper. Pellentesque suscipit odio urna, ac ultrices nisi pretium in. Vivamus pharetra nisl et pharetra iaculis.</div>
