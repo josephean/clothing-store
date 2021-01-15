@@ -8,13 +8,13 @@ const QuantityCounter = props => {
   const decrement = () => {
     if(quantity > 0) {
       setQuantity(quantity - 1);
-      props.value(quantity);
+      props.value(quantity -1);
     }
   }
 
   const increment = () => {
     setQuantity(quantity + 1);
-    props.value(quantity);
+    props.value(quantity + 1);
   }
 
 
