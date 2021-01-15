@@ -5,6 +5,7 @@ import Select from './Select';
 import QuantityCounter from './QuantityCounter';
 import images from '../images';
 import { listProducts } from '../actions/productActions';
+import { addProduct } from '../actions/cartActions';
 
 
 class ProductDetailPage extends Component {
@@ -37,12 +38,13 @@ class ProductDetailPage extends Component {
   }
 
   addToBag = () => {
-    console.log('this.state.__quantity :>> ', this.state.__quantity);
-    const qty = this.state.__quantity; 
-    const size = this.state.__selectedSize;
-    const color = this.state.__selectedColor;
+    console.log('add to bag clicked!');
+    const qty = this.state.__quantity;
+    const id = parseInt(this.state.__id);
+    const { addProduct } = this.props;
+    addProduct(id, qty);
 
-    
+    console.log('this.props.cartItems :>> ', this.props.cartItems);
   };
 
   isDisabled = () => {
@@ -132,9 +134,9 @@ class ProductDetailPage extends Component {
 }
 
 const mapStateToProps = state => {
-  return ({ productList: state.productList })};
+  return ({ productList: state.productList, cartItems: state.cartItems })};
 
 
-const mapDispatchToProps = { listProducts };
+const mapDispatchToProps = { listProducts, addProduct };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailPage);
