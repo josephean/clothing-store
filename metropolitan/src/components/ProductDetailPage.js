@@ -41,8 +41,10 @@ class ProductDetailPage extends Component {
     console.log('add to bag clicked!');
     const qty = this.state.__quantity;
     const id = parseInt(this.state.__id);
+    const { __selectedColor: color} = this.state;
+    const { __selectedSize: size } = this.state;
     const { addProduct } = this.props;
-    addProduct(id, qty);
+    addProduct(id, qty, color, size);
 
     console.log('this.props.cartItems :>> ', this.props.cartItems);
   };

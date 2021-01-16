@@ -30,6 +30,7 @@ class ShoppingCartController extends Component {
 
   render() {
     const { cart: { cartItems } } = this.props;
+    console.log('cartItems (in shopping cart controller):>> ', cartItems);
     return(
       <div>
          <div className="header">

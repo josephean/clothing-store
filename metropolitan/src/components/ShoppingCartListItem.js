@@ -17,6 +17,12 @@ class ShoppingCartListItem extends Component {
         <div className="cart-item-row-details">
           <div className="item-price">${item.price}</div>
         </div>
+        <div className="cart-item-row-details">
+          <div className="item-size">SIZE: {item.size}</div>
+        </div>
+        <div className="cart-item-row-details">
+          <div className="item-color">COLOR: {item.color}</div>
+        </div>
       </div>
     )
   }
