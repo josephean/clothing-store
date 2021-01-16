@@ -4,7 +4,6 @@ import images from '../images';
 
 const SearchItem = props => {
   const item = props.value;
-  console.log('props.key :>> ', props.key);
   const img = images.products.find(product => product.id === parseInt(props.id));
   return(
     <div id="search-item-container">

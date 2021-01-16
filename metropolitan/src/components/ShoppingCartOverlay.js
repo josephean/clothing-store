@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
+import { addProduct } from '../actions/cartActions';
 
+import ShoppingCartController from '../components/ShoppingCartController';
 import '../styles/ShoppingCartOverlay.css';
 
 class ShoppingCartOverlay extends Component {
@@ -19,21 +20,25 @@ class ShoppingCartOverlay extends Component {
   render() {
     const visibility = this.props.visibility ? 'show' : 'hide';
     console.log('visibility :>> ', visibility);
+    console.log('this.props :>> ', this.props);
+    const { cart: { cartItems } } = this.props;
+    console.log('items :>> ', cartItems);
 
     return(
       <div id="cart-overlay-container">
         {visibility === 'show' ? <div className="blocker" onClick={(e) => this.closeOverlay(e)}></div> : ''}
         <div className={`cart-container ${visibility}`}>
-          <div className="header">
-          <div><h1 className="header-text">Shopping Bag</h1></div>
-          <div className="exit">
-            <FontAwesomeIcon onClick={(e) => this.closeOverlay(e)} icon={faTimes}/>
-          </div>
-          </div>
+          <div><ShoppingCartController onClose={(e) => this.closeOverlay(e)}/></div> 
         </div>
       </div>
     )
   };
 }
 
-export default ShoppingCartOverlay;
+const mapStateToProps = state => {
+  return ({ cart: state.cart})
+};
+
+const mapDispatchToProps = { addProduct };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartOverlay);

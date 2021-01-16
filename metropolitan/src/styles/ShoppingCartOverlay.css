@@ -31,10 +31,12 @@
 
 .cart-container .header-text {
   flex: 2;
+  padding: 10px 20px;
 }
 
 .cart-container .exit {
   flex: 1;
+  padding: 10px 20px;
 }
 
 @media screen and (max-width: 640px) {

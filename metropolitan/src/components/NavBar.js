@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import { connect } from 'react-redux';
 import '../styles/NavBar.css';
 import { faSearch, faShoppingBag, faUser, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

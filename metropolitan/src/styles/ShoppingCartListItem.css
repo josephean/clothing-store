@@ -1,0 +1,30 @@
+.shopping-cart-item-container {
+  border: 1px solid #000000;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.shopping-cart-item-container .cart-item-row-flex {
+  display: flex;
+}
+
+.shopping-cart-item-container .item-name {
+  flex: 1;
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.shopping-cart-item-container .item-qty {
+  flex: 1;
+  font-size: 14px;
+  text-align: right;
+}
+
+.shopping-cart-item-container .cart-item-row-details {
+  flex: 1;
+  text-align: left;
+  font-size: 12px;
+  padding: 5px 0px;
+}
