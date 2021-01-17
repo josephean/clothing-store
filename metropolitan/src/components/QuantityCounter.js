@@ -8,15 +8,14 @@ const QuantityCounter = props => {
   const decrement = () => {
     if(quantity > 0) {
       setQuantity(quantity - 1);
-      props.value(quantity -1);
+      if (props.getValue) props.getValue(quantity - 1);
     }
   }
 
   const increment = () => {
     setQuantity(quantity + 1);
-    props.value(quantity + 1);
+    if (props.getValue) props.getValue(quantity + 1);
   }
-
 
   return (
     <div className="count-container">

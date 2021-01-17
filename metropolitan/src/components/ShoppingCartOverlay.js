@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addProduct } from '../actions/cartActions';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ShoppingCartController from '../components/ShoppingCartController';
 import '../styles/ShoppingCartOverlay.css';
@@ -19,13 +20,19 @@ class ShoppingCartOverlay extends Component {
 
   render() {
     const visibility = this.props.visibility ? 'show' : 'hide';
+    console.log('this.props.visibility :>> ', this.props.visibility);
+    console.log('visibility :>> ', visibility);
 
     return(
       <div id="cart-overlay-container">
         {visibility === 'show' ? <div className="blocker" onClick={(e) => this.closeOverlay(e)}></div> : ''}
-        <div className={`cart-container ${visibility}`}>
+        <CSSTransition 
+        in={this.props.visibility} 
+        timeout={300}
+        unmountOnExit
+        className={`cart-container ${visibility}`}>
           <div><ShoppingCartController onClose={(e) => this.closeOverlay(e)}/></div> 
-        </div>
+        </CSSTransition>
       </div>
     )
   };

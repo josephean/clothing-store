@@ -1,5 +1,6 @@
-import React, { Component, useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import '../styles/NavBar.css';
 import { faSearch, faShoppingBag, faUser, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,12 +11,15 @@ import {
 
 import SearchController from './SearchController';
 import ShoppingCartOverlay from './ShoppingCartOverlay';
+import { calculateTotal } from '../components/ShoppingCartController';
 
 const NavBar = () => {
 
   const [ showShopMenu, toggleMenu ] = useState(false);
   const [ showSearch, toggleSearch ] = useState(false);
   const [ showCart, toggleCart ] = useState(false);
+
+  const { cart: { cartItems } } = useSelector(state => state);
 
   const toggleShopMenu = (event) => {
     if (event.key) {
@@ -62,7 +66,6 @@ const NavBar = () => {
   let expanded = showShopMenu;
   expanded = (expanded === true ? 'show' : 'hide');
   console.log('showCart :>> ', showCart);
-
     return(
       <div id="menu-container">
         <div id="navBar">
@@ -96,24 +99,31 @@ const NavBar = () => {
             </ul>
           </div>
           <div id="iconsContainer">
-            <FontAwesomeIcon 
-            onClick={toggleSearchOverlay}
-            onKeyDown={toggleSearchOverlay}
-            className="icon search" 
-            icon={faSearch}
-            tabIndex="0" 
-            role="button"
-            aria-pressed="false"
-            size="1x"/>
-            <FontAwesomeIcon className="icon" onClick={toggleCartOverlay} icon={faShoppingBag} size="1x"/>
-            <FontAwesomeIcon className="icon" icon={faUser} size="1x"/>
+            <div className="icon-col">
+              <FontAwesomeIcon 
+              onClick={toggleSearchOverlay}
+              onKeyDown={toggleSearchOverlay}
+              className="icon search" 
+              icon={faSearch}
+              tabIndex="0" 
+              role="button"
+              aria-pressed="false"
+              size="1x"/>
+            </div>
+            <div class="icon-col">
+              <FontAwesomeIcon className="icon" onClick={toggleCartOverlay} icon={faShoppingBag} size="1x"/>
+              <span className="cart-count">({calculateTotal(cartItems)})</span>
+            </div>
+            <div class="icon-col">
+              <FontAwesomeIcon className="icon" icon={faUser} size="1x"/>
+            </div>
           </div>
           </div>
         </div>
         {showSearch ? 
         <SearchOverlay close={toggleSearchOverlay}/>
         : ''}
-        <ShoppingCartOverlay toggle={toggleCartOverlay} visibility={showCart}/> 
+        <ShoppingCartOverlay toggle={toggleCartOverlay} visibility={showCart}/>
       </div>
     )
   }

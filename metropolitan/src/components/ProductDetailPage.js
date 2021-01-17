@@ -115,7 +115,7 @@ class ProductDetailPage extends Component {
         <div className="details-view">
           <h1>{product.name}</h1>
           <div className="price">${product.price}</div>
-          <div className="counter"><QuantityCounter value={this.getQuantity}/> <button className={`add-to-bag ${disabled}`}onClick={this.addToBag}>Add to bag</button></div>
+          <div className="counter"><QuantityCounter getValue={this.getQuantity}/> <button className={`add-to-bag ${disabled}`}onClick={this.addToBag}>Add to bag</button></div>
           <div className="select"><Select placeholder={sizeText} menuItems={product.sizes} value={this.getSize}/></div>
           <div className="select"><Select placeholder={colorText} menuItems={productColors} value={this.getColor}/></div>
           <div className="description"><h3>Description</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tristique risus et odio ornare, ac efficitur ligula dignissim. Integer imperdiet volutpat mollis. Integer in congue ex. Suspendisse nec massa non erat feugiat efficitur. Cras at metus nec massa maximus lacinia. Vestibulum euismod pellentesque ex dignissim tempor. Vestibulum ut magna vulputate, hendrerit neque at, malesuada enim. Cras luctus dolor sit amet magna facilisis consectetur. Nam interdum elementum eleifend. Aenean diam nulla, venenatis a augue non, rhoncus bibendum arcu. Pellentesque id interdum nunc, ac rutrum felis. Nam egestas orci at accumsan hendrerit. Sed quis neque et urna fermentum semper. Pellentesque suscipit odio urna, ac ultrices nisi pretium in. Vivamus pharetra nisl et pharetra iaculis.</div>

@@ -5,25 +5,24 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import ShoppingCartListItem from '../components/ShoppingCartListItem';
 
+export const calculateTotal = items => {
+  const total = items.reduce((memo, curr) =>  {
+    console.log('curr.quantity >>>', curr.quantity)
+    return memo + curr.quantity;
+  }, 0);
+  return total;
+}
+
 class ShoppingCartController extends Component {
   constructor(props) {
     super(props);
 
     this.generateCartList = this.generateCartList.bind(this);
-    this.calculateTotal = this.calculateTotal.bind(this);
   }
 
   generateCartList = items => {
     const cartList = items.map(item => <ShoppingCartListItem value={item}/>)
     return cartList;
-  }
-
-  calculateTotal = items => {
-    const total = items.reduce((memo, curr) =>  {
-      console.log('curr.quantity >>>', curr.quantity)
-      return memo + curr.quantity;
-    }, 0);
-    return total;
   }
 
 
@@ -35,7 +34,7 @@ class ShoppingCartController extends Component {
       <div>
          <div className="header">
             <div>
-              <h1 className="header-text">Shopping Bag ({this.calculateTotal(cartItems)})</h1>
+              <h1 className="header-text">Shopping Bag ({calculateTotal(cartItems)})</h1>
               </div>
             <div className="exit">
               <FontAwesomeIcon onClick={(e) => this.props.onClose(e)} icon={faTimes}/>

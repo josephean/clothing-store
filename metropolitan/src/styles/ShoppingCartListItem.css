@@ -22,9 +22,26 @@
   text-align: right;
 }
 
+.item-qty .update {
+  font-size: 10px;
+  padding-top: 5px;
+}
+
+.item-qty .update:hover {
+  color: #6d6d6d;
+  cursor: pointer;
+}
+
 .shopping-cart-item-container .cart-item-row-details {
   flex: 1;
   text-align: left;
   font-size: 12px;
   padding: 5px 0px;
+}
+
+.shopping-cart-item-container .quantity-input {
+  max-width: 40px;
+  text-decoration: none;
+  outline: none;
+  border: 1px solid #aaaaaa;
 }

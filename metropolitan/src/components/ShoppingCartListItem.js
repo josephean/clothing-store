@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import QuantityCounter from '../components/QuantityCounter';
 import '../styles/ShoppingCartListItem.css';
 
 class ShoppingCartListItem extends Component {
@@ -12,7 +13,7 @@ class ShoppingCartListItem extends Component {
       <div className="shopping-cart-item-container">
         <div className="cart-item-row-flex">
           <div className="item-name">{item.name}</div>
-          <div className="item-qty">Qty: {item.quantity}</div>
+          <div className="item-qty">Qty: <input className="quantity-input" type="text" defaultValue={item.quantity}/><br/><div className="update">UPDATE</div></div>
         </div>
         <div className="cart-item-row-details">
           <div className="item-price">${item.price}</div>
