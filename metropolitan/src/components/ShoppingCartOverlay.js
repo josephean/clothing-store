@@ -20,8 +20,6 @@ class ShoppingCartOverlay extends Component {
 
   render() {
     const visibility = this.props.visibility ? 'show' : 'hide';
-    console.log('this.props.visibility :>> ', this.props.visibility);
-    console.log('visibility :>> ', visibility);
 
     return(
       <div id="cart-overlay-container">

@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import ShoppingCartListItem from '../components/ShoppingCartListItem';
+import { updateProduct } from '../actions/cartActions';
 
 export const calculateTotal = items => {
   const total = items.reduce((memo, curr) =>  {
-    console.log('curr.quantity >>>', curr.quantity)
     return memo + curr.quantity;
   }, 0);
   return total;
@@ -18,10 +18,20 @@ class ShoppingCartController extends Component {
     super(props);
 
     this.generateCartList = this.generateCartList.bind(this);
+    this.editCart = this.editCart.bind(this);
+  }
+
+  editCart = item => {
+    const { quantity } = item;
+    if (quantity >= 0) {
+      const { updateProduct } = this.props;
+      updateProduct(item);
+    }
   }
 
   generateCartList = items => {
-    const cartList = items.map(item => <ShoppingCartListItem value={item}/>)
+    const cartList = items.map(item => <ShoppingCartListItem key={item.id} onEdit={this.editCart} value={item}/>)
+    
     return cartList;
   }
 
@@ -29,7 +39,6 @@ class ShoppingCartController extends Component {
 
   render() {
     const { cart: { cartItems } } = this.props;
-    console.log('cartItems (in shopping cart controller):>> ', cartItems);
     return(
       <div>
          <div className="header">
@@ -40,11 +49,16 @@ class ShoppingCartController extends Component {
               <FontAwesomeIcon onClick={(e) => this.props.onClose(e)} icon={faTimes}/>
             </div>
           </div>
-       <div id="shopping-cart-controller">{cartItems.length ? this.generateCartList(cartItems) : 'There are no items in your bag.'}</div>
+       <div id="shopping-cart-controller">
+       {/* <div className="checkout-button">[CHECKOUT]</div> */}
+      <div className="cart-list">{cartItems.length ? this.generateCartList(cartItems) : 'There are no items in your bag.'}</div>
+       </div>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({cart: state.cart});
-export default connect(mapStateToProps)(ShoppingCartController);
+const mapDispatchToProps = { updateProduct };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartController);

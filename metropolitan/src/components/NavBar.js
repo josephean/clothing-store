@@ -76,23 +76,29 @@ const NavBar = () => {
           <div id="nav-and-icons">
           <div id="navigation">
             <ul>
-            <li><Link className="nav-link" to="/">HOME</Link></li>
-            <li><span
-            className="nav-link" 
-            onClick={toggleShopMenu}
-            onKeyDown={toggleShopMenu}
-            aria-haspopup
-            aria-expanded="false"
-            tabIndex="0"
-            >SHOP <FontAwesomeIcon className={`nav-icon ${expanded}`} icon={faChevronDown}/></span>
-            {showShopMenu ?
-            <div id="submenu-container">
-              <div className="blocker" 
-              onClick={closeShopMenu}>
+            <li>
+              <Link className="nav-link" to="/">HOME</Link>
+            </li>
+            <li>
+              <span
+              className="nav-link" 
+              onClick={toggleShopMenu}
+              onKeyDown={toggleShopMenu}
+              aria-haspopup
+              aria-expanded="false"
+              tabIndex="0"
+              >
+                SHOP <FontAwesomeIcon className={`nav-icon ${expanded}`} icon={faChevronDown}/>
+              </span>
+            
+              <CSSTransition in={showShopMenu} timeout={300} unmountOnExit classNames="submenu-container"><div className="submenu-container">
+                <div className="blocker" 
+                onClick={closeShopMenu}>
+                </div>
+                <SubMenu close={closeShopMenu}/>
               </div>
-              <SubMenu close={closeShopMenu}/>
-            </div> : 
-            ''}</li>
+              </CSSTransition>
+            </li>
 
             <li><Link className="nav-link" to="/about">ABOUT</Link></li>
             <li><Link className="nav-link" to="/">CONTACT US</Link></li>
@@ -131,7 +137,7 @@ const NavBar = () => {
 
 const SubMenu = props => {
   return(
-    <div id="categories">
+    <div id="categories" className="menu-container">
       <div className="category">
         <h3>Tops</h3>
           <div className="item">

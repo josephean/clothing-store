@@ -109,7 +109,7 @@
 
 /* ------ submenu styling -------*/
 
-#submenu-container {
+.submenu-container {
   position: absolute;
   width: 100%;
   z-index: 2;
@@ -119,6 +119,21 @@
   background-color: #fff;
   box-sizing: border-box;
 }
+
+.submenu-container-enter {
+  opacity: 0;
+}
+
+.submenu-container-enter-active {
+  opacity: 1;
+  transition: opacity 100ms ease-in;
+}
+
+.submenu-container-exit-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in;
+}
+
 
 #categories {
   display: flex;

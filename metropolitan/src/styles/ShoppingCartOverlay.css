@@ -14,6 +14,7 @@
   text-align: center;
   font-size: 1rem;
   background-color: #fff;
+  overflow-y: auto;
   /* opacity: 0; */
   /* transition: transform .3s cubic-bezier(0, .52, 0, 1); */
 }
@@ -63,6 +64,15 @@
   padding: 10px 20px;
 }
 
+.cart-list {
+  padding: 1rem;
+}
+
+.checkout-button {
+  top: 0;
+  position: relative;
+  width: 100%;
+}
 @media screen and (max-width: 640px) {
   .cart-container {
     min-width: 100%;
