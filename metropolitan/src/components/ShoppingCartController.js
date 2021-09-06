@@ -40,7 +40,7 @@ class ShoppingCartController extends Component {
   render() {
     const { cart: { cartItems } } = this.props;
     return(
-      <div>
+      <div style={{width: '100%'}}>
          <div className="header">
             <div>
               <h1 className="header-text">Shopping Bag ({calculateTotal(cartItems)})</h1>
@@ -50,8 +50,8 @@ class ShoppingCartController extends Component {
             </div>
           </div>
        <div id="shopping-cart-controller">
-       {/* <div className="checkout-button">[CHECKOUT]</div> */}
-      <div className="cart-list">{cartItems.length ? this.generateCartList(cartItems) : 'There are no items in your bag.'}</div>
+          <div className="cart-list">{cartItems.length ? this.generateCartList(cartItems) : 'There are no items in your bag.'}</div>
+          <div className="checkout-button"><button className="action-button">Checkout</button></div>
        </div>
       </div>
     )
